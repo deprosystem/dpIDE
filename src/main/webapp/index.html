@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>IDE DePro</title>
+        <link rel="icon" href="img/logo_blue.png" sizes="32x32">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="css/index.css" type="text/css">
+        <link rel="stylesheet" href="css/scroll.css" type="text/css">
+        <link rel="stylesheet" href="css/hamburger.css" type="text/css">
+        <link rel="stylesheet" href="css/pickerColor.css" type="text/css">
+        
+        <script src="js/layoutIndex.js" charset="UTF-8"></script>
+        <script src="js/ajax/ajax.js" ></script>
+        <script src="js/header_nav.js"></script>
+        <script src="js/debagStatus.js"></script>
+        <script src="js/helpLinks.js"></script>
+        <script src="js/templates.js"></script>
+        <script src="js/selectData.js"></script>
+        <script src="js/uiCommonUse/uiAny.js" ></script>
+        <script src="js/uiCommonUse/generalMenu.js" ></script>
+        <script src="js/uiElements/uiToolBar.js" ></script>
+        <script src="js/uiElements/uiMenuBottom.js" ></script>
+        <script src="js/uiElements/uiMenu.js" ></script>
+        <script src="js/uiElements/uiCalendar.js" ></script>
+        <script src="js/uiElements/uiImageView.js" ></script>
+        <script src="js/uiElements/uiMap.js" ></script>
+        <script src="js/uiElements/uiSeekBar.js" ></script>
+        <script src="js/uiElements/uiTabLayout.js" ></script>
+        <script src="js/uiElements/uiPager.js" ></script>
+        <script src="js/uiElements/uiTextView.js" ></script>
+        <script src="js/uiElements/uiIndicator.js" ></script>
+        <script src="js/uiElements/uiEllipsis.js" ></script>
+        <script src="js/uiElements/uiEditText.js" ></script>
+        <script src="js/uiElements/uiGallery.js" ></script>
+        <script src="js/uiElements/uiEditGallery.js" ></script>
+        <script src="js/uiElements/uiPanel.js" ></script>
+        <script src="js/uiElements/uiForm.js" ></script>
+        <script src="js/uiElements/uiCheckBox.js" ></script>
+        <script src="js/uiElements/uiCardView.js" ></script>
+        <script src="js/uiElements/uiSheetBottom.js" ></script>
+        <script src="js/uiElements/uiTags.js" ></script>
+        <script src="js/uiElements/uiSwitch.js" ></script>
+        <script src="js/uiElements/uiSwipe.js" ></script>
+        <script src="js/uiElements/uiPlusMinus.js" ></script>
+        <script src="js/uiElements/uiRatings.js" ></script>
+        <script src="js/uiElements/uiScrollPanel.js" ></script>
+        <script src="js/uiElements/uiScrollForm.js" ></script>
+        <script src="js/uiElements/uiSpinner.js" ></script>
+        <script src="js/uiElements/uiItemScroll.js" ></script>
+        <script src="js/uiElements/uiIntro.js" ></script>
+        
+        <script src="js/emulator/workEmulator.js"></script>
+        <script src="js/emulator/emPanel.js"></script>
+        <script src="js/emulator/emList.js"></script>
+        <script src="js/emulator/emScrollPanel.js"></script>
+        <script src="js/emulator/emModel.js"></script>
+        <script src="js/emulator/setComponentsScr.js"></script>
+        <script src="js/emulator/setDataToView.js"></script>
+        <script src="js/emulator/emNavigator.js"></script>
+
+        <script src="js/screens.js" ></script>
+        
+        <script src="js/uiElements/uiList.js" ></script>
+        <script src="js/paramComponent.js"></script>
+        <script src="js/menu/menuProcessing.js" ></script>
+        <script src="js/menu/menuIndex.js" ></script>
+        <script src="js/menu/contMenuNav.js"></script>
+        <script src="js/menu/popupMenu.js"></script>
+        <script src="js/uxNavigator/metaDataNavigator.js" ></script>
+        <script src="js/uxNavigator/formNavigator.js" ></script>
+        <script src="js/uxNavigator/uxNavigator.js" ></script>
+        <script src="js/uxCommonUse/uxSeparators.js" ></script>
+        <script src="js/uxCommonUse/model.js" ></script>
+        <script src="js/uxCommonUse/metaModel.js" ></script>
+        <script src="js/uxCommonUse/choiseComponent.js" ></script>
+        <script src="js/uxCommonUse/formElemUI.js" ></script>
+        <script src="js/uxComponents/uxPager.js" ></script>
+        <script src="js/uxComponents/uxTabLayout.js" ></script>
+        <script src="js/uxComponents/uxToolBar.js" ></script>
+        <script src="js/uxComponents/uxToolMenu.js" ></script>
+        <script src="js/uxComponents/uxMenuBottom.js" ></script>
+        <script src="js/uxComponents/uxMenu.js" ></script>
+        <script src="js/uxComponents/uxPanel.js" ></script>
+        <script src="js/uxComponents/uxScrollPanel.js" ></script>
+        <script src="js/uxComponents/uxScrollForm.js" ></script>
+        <script src="js/uxComponents/uxMap.js" ></script>
+        <script src="js/uxComponents/uxDrawer.js" ></script>
+        <script src="js/uxComponents/uxList.js" ></script>
+        <script src="js/uxComponents/uxForm.js" ></script>
+        <script src="js/uxComponents/uxSheetBottom.js" ></script>
+        <script src="js/uxComponents/uxTags.js" ></script>
+        <script src="js/uxComponents/uxPlusMinus.js" ></script>
+        <script src="js/uxComponents/uxTotal.js" ></script>
+        <script src="js/uxComponents/uxPhoto.js" ></script>
+        <script src="js/uxComponents/uxSpinner.js" ></script>
+        <script src="js/uxComponents/uxScreenSequence.js" ></script>
+        <script src="js/uxComponents/uxIntro.js" ></script>
+        <script src="js/uxComponents/uxEditGallery.js" ></script>
+        <script src="js/uxComponents/uxSubscribeFirebase.js" ></script>
+        <script src="js/uxComponents/uxSubscribeServer.js" ></script>
+        
+        <script src="js/propertis/pushNotifications.js" ></script>
+        <script src="js/propertis/multiLingual.js" ></script>
+        
+        <script src="js/palette/colorCircle.js"></script>
+        <script src="js/palette/palette.js"></script>
+        
+        <script src="js/scroll/scrollY.js"></script>
+        <script src="js/scroll/ScrollItem.js"></script>
+        <script src="js/scroll/resizeScrollItem.js"></script>
+        
+        <script src="js/editData/metaData.js" ></script>
+        <script src="js/editData/listEdit.js" ></script>
+        <script src="js/editData/editArrayData.js" ></script>
+        <script src="js/editData/formLogin.js" ></script>
+        <script src="js/tools/windListView.js"></script>
+        <script src="js/tools/scrollX.js"></script>
+        <script src="js/tools/tool.js"></script>
+        <script src="js/tools/editForm.js" ></script>
+        <script src="js/tools/ListView.js"></script>
+        <script src="js/tools/uiEditParam.js"></script>
+        <script src="js/tools/keyTools.js"></script>
+        <script src="js/tools/imgColor.js"></script>
+        <script src="js/tools/dateWork.js"></script>
+        <script src="js/tools/shakeAnimate.js"></script>
+        <script src="js/tools/selectBlock.js"></script>
+        <script src="js/tools/validEditField.js"></script>
+        <script src="js/tools/inputNumber.js"></script>
+        <script src="js/tools/selectListImage.js"></script>
+        <script src="js/tools/formWind.js"></script>
+        <script src="js/tools/dialogError.js"></script>
+        <script src="js/tools/valid.js" ></script>
+        <script src="js/tools/stylePr.js"></script>
+        <script src="js/tools/myAlert.js"></script>
+        <script src="js/tools/editUX.js"></script>
+        <script src="js/tools/tooltipMes.js"></script>
+        <script src="js/tools/convertColor.js"></script>
+        
+        <script src="js/screenValid.js"></script>
+        <script src="js/cookie.js"></script>
+        <script src="js/initial.js"></script>
+        <script src="js/setComponent.js"></script>
+        <script src="js/moveResize/movePanel.js" ></script>
+        <script src="js/moveResize/moveElement.js" ></script>
+        <script src="js/drawable.js"></script>
+        
+        <script src="js/navigatorEl.js" ></script>
+        
+        <script src="js/pickerColor/picker.js"></script>
+        <script src="js/pickerColor/my_picker.js"></script>
+        <script src="js/pickerColor/Lib.js" ></script>
+        
+        <script src="js/backEnd/showPanel.js" ></script>
+        <script src="js/backEnd/tableObj.js" ></script>
+        <script src="js/backEnd/querySelect.js" ></script>
+        <script src="js/backEnd/table.js" ></script>
+        <script src="js/backEnd/query.js" ></script>
+        <script src="js/backEnd/dbQuery.js" ></script>
+        <script src="js/backEnd/crud.js" ></script>
+        <script src="js/backEnd/choiceTableFields.js" ></script>
+        <script src="js/backEnd/choiceQueryFields.js" ></script>
+        <script src="js/backEnd/descrDB.js" ></script>
+        <script src="js/backEnd/fieldsFromSource.js" ></script>
+        <script src="js/backEnd/metaDataBackEnd.js" ></script>
+    </head>
+    <body onload="formLogin();">
+        <div id="header">
+            <img width="35" height="35" src="img/logo_blue.png" style="float: left;margin-right: 5px;">
+            <div id="panel_hamburger" onclick="mainMenuShow()">
+                <div id="hamburger1" class="hamburger1" ></div>
+                <div id="hamburger2" class="hamburger2" ></div>
+                <div id="hamburger3" class="hamburger3" ></div> 
+            </div>
+
+            <div id="project_name_bl" onclick="logP();" style="background-color:var(--c_blue);float: left;width:100px;height: 100%;display:none">
+                <div id="project_name" style="color:white;text-align:center;margin-top: 9px"></div>
+            </div>
+            <div id="plus_screen" onclick="plusScreen()" style="height: 100%; float: left; margin-left: 10px; cursor: pointer;display: none;">
+                <img width="16" height="16" style="float: left; margin-top: 9px" src="img/add.png">
+                <div style="height: 100%; float: left; margin-left: 5px;margin-top: 10px;color:#ffffffcc">Screen</div>
+            </div>
+            
+            <div id="corners" style="height: 100%; float: left; margin-left: 20px;display: none;">
+                <img width="15" height="14" onclick="undo()" style="float: left; margin-top: 9px;cursor: pointer;" src="img/corner-no_act-left.png">
+                <img width="15" height="14" onclick="restore()" style="float: left; margin-top: 9px;cursor: pointer;margin-left: 5px;" src="img/corner-no_act-right.png">
+            </div>
+            
+            <div id="statusDebagView" style="background-color:red;float: left;width:100px;height: 100%;display:none;margin-left: 30px">
+                <div style="color:white;text-align:center;margin-top: 9px">Status debug</div>
+            </div>
+            
+            <div onclick="setComponentsScr()" id="emulator" style="cursor: pointer;float: left;height: 100%;margin-left: 10px;">
+                <div id="emulator_inf" style="text-align: center;margin-top:12px;color:#ffffffcc;">Preview</div>
+            </div>
+            
+            <div id="palette" onclick="setPalette()" style="cursor: pointer;float: left;height: 100%;margin-left: 10px;">
+                <div id="emulator_inf" style="text-align: center;margin-top:12px;color:#ffffffcc;">Palette</div>
+            </div>
+            
+            <div id="dataControll" style="float: left;height: 100%;margin-left: 30px;display: none">
+                <div class="source" onclick="dbServer()" style="cursor: pointer;float: left;height: 100%;">
+                    <div style="height: 18px;margin-top:8px;color:#fff;">DB on server</div>
+                </div>
+                <div style="float: left;width: 1px;height: 25px;margin-top: 5px;margin-left: 8px;margin-right: 8px;background-color: #eee"></div>
+
+                <div class="source" onclick="dbAPI()" style="cursor: pointer;float: left;height: 100%;">
+                    <div style="height: 18px;margin-top:8px;color:#fff;"> API </div>
+                </div>
+                <div style="float: left;width: 1px;height: 25px;margin-top: 5px;margin-left: 8px;margin-right: 8px;background-color: #eee"></div>
+                <div class="source" onclick="dbLocal()" style="cursor: pointer;float: left;height: 100%;">
+                    <div style="height: 18px;margin-top:8px;color:#fff;">DB in APP</div>
+                </div>
+                <div style="float: left;width: 1px;height: 25px;margin-top: 5px;margin-left: 8px;margin-right: 8px;background-color: #eee"></div>
+                <div class="source" onclick="dbGoogleSh()" style="cursor: pointer;float: left;height: 100%;">
+                    <div style="height: 18px;margin-top:8px;color:#fff;">Google Sheets</div>
+                </div>
+                <div style="float: left;width: 1px;height: 25px;margin-top: 5px;margin-left: 8px;margin-right: 8px;background-color: #eee"></div>
+                <div onclick="openAdminWind()" style="cursor: pointer;float: left;height: 100%;">
+                    <div style="height: 18px;margin-top:8px;color:#fff;">Admin</div>
+                </div>
+            </div>
+                        
+            <div onclick="viewData()" id="show_data">
+                <div id="show_data_inf" style="text-align: center;margin-top:7px;color: white;font-size: 16px;">Data</div>
+            </div>
+            
+            <div onclick="editUX_UI()" id="ux_ui_w" style="display: none">
+                <div id="ux_ui" style="text-align: center;margin-top:9px;color:white;font-size: 16px;font-weight: bold">U I</div>
+            </div>
+           
+            <img width="35" height="35" onclick="helpDoc()" style="float: right; cursor: pointer;" src="img/question_2.png">
+            
+            <div id="user_circle" onclick="infUser()" style="float:right;cursor: pointer;background-color: #ff1eac;width: 22px;height: 22px;border-radius: 11px;margin-top:6px;margin-right:10px;">
+                <div id="info_user" style="margin-top:4px;text-align:center;color:black;font-size:12px;font-weight:bold;"></div>
+            </div>
+
+            <div id="type_insert" style="height: 100%;float:right;width:150px;margin-right:10px;display:none">
+                <div style="color: #b5b5b5;font-size: 10px;margin-top: 4px;">Type insert</div>
+                <div id="info_type_insert" style="clear: both;color: white;font-size: 12px;"></div>
+            </div>
+            
+            <div id="active" style="height: 100%;float:right;width:150px;margin-right:10px;display:none">
+                <div style="color: #b5b5b5;font-size: 10px;margin-top: 4px;">Active</div>
+                <div id="info_active" style="clear: both;color: white;font-size: 12px;"></div>
+            </div>
+        </div>
+        <div id="hintMenuMain" style="position: absolute; top: 23px; left: 30px; background-color: #55f; color: white; 
+             display: none; z-index: 1; padding-left: 5px; padding-right: 5px">Меню</div>
+        <div id="menuMain" class="menu_main" style="margin-left: 15px; position: absolute; top: var(--h_header); z-index: 100; display: none"></div>
+        <div id="compon_ui">
+            <div id="listCompon">
+                <div id="category"></div>
+                <div id="type_view"></div>
+            </div>
+            <div id="hierarhy">
+                <div id="navigator_scr" class="viewport" data-control="scroll">
+                    <div id="navigator_container" class="content" style="padding-right: 15px">
+                        <div id="navigatorEl" style="margin-left: 5px;margin-right:5px; margin-bottom:10px;-webkit-user-select: none;-moz-user-select: none;user-select: none;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="separator" onmousedown="sepMove(event)"></div>
+        </div>
+        <div id="compon">
+            <div id="container_scr" class="viewport" data-control="scroll">
+                <div id="screen_container" class="content" style="padding-right: 15px">
+                    <div id="list_screens">
+
+                    </div>
+                </div>
+                <div id="inf_error" style="width: 10px; height: 7px; position: absolute;right: 7px;top: 0px;background-color:#0f0"></div>
+                <div id="box_error" style="width: 10px; position: absolute;right: 7px;top: 15px;bottom: 10px;background-color:#dfdfdf"></div>
+            </div>
+        </div>
+        <div id="haracteristicks">
+            <div id="layoutParam">
+                <div style="margin-left: 12px;margin-top: 12px;margin-right: 12px;height: 18px">
+                    <div id="el_type" style="float: left;font-size: 14px;color: #110000;font-weight: 600"></div>
+                    <div onclick="clickVisibility(this);" style="float: right;cursor: pointer">
+                        <div style="float: right;">Visibility</div>
+                        <img id="visibility" style="float: right;margin-right: 10px;" width="16" height="16" src="img/check-sel_1.png">
+                    </div>
+                </div>
+                <div style="margin-left:12px;margin-top:5px;margin-right: 12px;height: 28px">
+                    <div style="width:48%;float: left">
+                        <div class="text_style_ui">Id</div>
+                        <input class="input_style_ui" id="el_id_input" type="text" >
+                    </div>
+                    <div style="width:48%;float: right">
+                        <div class="text_style_ui">Alias</div>
+                        <input class="input_style_ui" id="alias_input" type="text" >
+                    </div>
+                </div>
+                
+                <div style="margin-left:12px;margin-top:18px;margin-right: 12px;height: 26px">
+                    <div id="tabLayout" class="tab_head" style="background: #E7F7FF;">
+                        <div onclick="setLayoutDiv()" style="margin-top: 5px;text-align: center;color: #2C3336;cursor: pointer">Layouts</div>
+                    </div>
+                    <div id="tabContent" class="tab_head">
+                        <div onclick="setContentDiv()" style="margin-top: 5px;text-align: center;color: #2C3336;cursor: pointer">Content</div>
+                    </div>
+                </div>
+
+                <div style="position: absolute;left: 12px;top: 115px;right: 0px;bottom: 0px;">
+                    <div id="scrLayoutAttr" class="viewport" data-control="scroll" style="top: 0px;bottom: 5px;">
+                        <div class="content">
+                            <div id="layoutAttributes" style="float: left;padding-right: 12px">
+                                <div style="height: 44px;position: relative">
+                                    <div style="width: 50%;float: left">
+                                        <div style="float: left">
+                                            <div class="text_style_ui">Width</div>
+                                            <input class="input_style_ui" id="el_w_input" type="text" maxlength="4" size="10" style="width: 50px">
+                                        </div>
+                                        <div style="float: left;margin-top: 15px;height: 20px;margin-left: 10px">
+                                            <div  id="el_w_match" class="match_wrap">Match</div>
+                                        </div>
+                                        <div style="float: left;margin-top: 15px;height: 20px;margin-left: 10px">
+                                            <div id="el_w_wrap" class="match_wrap">Wrap</div>
+                                        </div>
+                                    </div>
+                                    <div style="width: 50%;float: left">
+                                        <div style="float: left">
+                                            <div class="text_style_ui">Height</div>
+                                            <input class="input_style_ui" id="el_h_input" type="text" maxlength="4" size="10" style="width: 50px">
+                                        </div>
+                                        <div style="float: left;margin-top: 15px;height: 20px;margin-left: 10px">
+                                            <div id="el_h_match" class="match_wrap">Match</div>
+                                        </div>
+                                        <div style="float: left;margin-top: 15px;height: 20px;margin-left: 10px">
+                                            <div  id="el_h_wrap" class="match_wrap">Wrap</div>
+                                        </div>
+                                    </div>
+                                    <div id="hideSize" style="width: 100%;height: 100%;background-color: #fffa;position: absolute;display: none"></div>
+                                </div>
+
+                                <div style="float: left;clear: both;width: 100%;margin-top: 7px;position: relative">
+                                    <div style="width: 50%;float: left">
+                                        <div class="text_style_ui">Layout gravity</div>
+                                        <div id="gravLayoutH" style="float: left;clear: both;">
+                                            <img class="grav" onclick="gravLayoutHorisontal(this, 0)" width="18" height="18" style="float: left;" src="img/align-left.png">
+                                            <img class="grav" onclick="gravLayoutHorisontal(this, 1)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-center.png">
+                                            <img class="grav" onclick="gravLayoutHorisontal(this, 2)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-right.png">
+                                        </div>
+                                        <div id="gravLayoutV" style="margin-top: 5px;float: left;clear: both;">
+                                            <img class="grav" onclick="gravLayoutVertical(this, 0)" width="18" height="18" style="float: left;" src="img/align-top.png">
+                                            <img class="grav" onclick="gravLayoutVertical(this, 1)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-middle.png">
+                                            <img class="grav" onclick="gravLayoutVertical(this, 2)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-bottom.png">
+                                        </div>
+                                    </div>
+                                    <div style=";width: 50%;float: left">
+                                        <div class="text_style_ui">Gravity</div>
+                                        <div id="gravityH" style="float: left;clear: both;">
+                                            <img class="grav" onclick="gravHorisontal(this, 0)" width="18" height="18" style="float: left;" src="img/align-left.png">
+                                            <img class="grav" onclick="gravHorisontal(this, 1)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-center.png">
+                                            <img class="grav" onclick="gravHorisontal(this, 2)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-right.png">
+                                        </div>
+                                        <div id="gravityV" style="margin-top: 5px;float: left;clear: both;">
+                                            <img class="grav" onclick="gravVertical(this, 0)" width="18" height="18" style="float: left;" src="img/align-top.png">
+                                            <img class="grav" onclick="gravVertical(this, 1)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-middle.png">
+                                            <img class="grav" onclick="gravVertical(this, 2)" width="18" height="18" style="float: left;margin-left: 24px" src="img/align-bottom.png">
+                                        </div>
+                                    </div>
+                                    <div id="hideGrav" style="width: 100%;height: 100%;background-color: #fffa;position: absolute;display: none"></div>
+                                </div>
+                                <div style="position: relative;width: 100%;padding-bottom: 5px;float: left;clear: both;margin-top: 10px;border-top: 1px solid #1DACEf;border-bottom: 1px solid #1DACEf;">
+                                        <div style="width: 100%;float: left;margin-top: 8px;">
+                                            <div style="float: left;color: #8199A5">Background</div> 
+                                            <div onclick="backgroundClear(this)" style="float: right;color: #1DACE9;font-size: 10px;cursor: pointer">Clear</div>
+                                        </div>
+                                        <div onclick="setPickerColor()" style="cursor: pointer; margin-top: 5px;float: left">
+                                            <div class="text_style_ui">Color</div> 
+                                            <div id="bg_color" style="width: 30px; height: 30px; float: left; border: 1px solid #bbd4ef;border-radius:5px;"></div>
+                                        </div>
+                                        <div style="cursor: pointer; margin-top: 5px;float: left;margin-left: 10px;">
+                                            <div class="text_style_ui">Image</div>
+                                            <img id="bg_img" onclick="setImgBG(event)" width="30" height="30" style="width: 30px; height: 30px; float: left; border: 1px solid #bbd4ef;border-radius:5px;">
+                                        </div>
+                                        <div style="cursor: pointer; margin-top: 5px;margin-left: 10px;float: left;">
+                                            <div class="text_style_ui">Drawable</div> 
+                                            <div onclick="chooseDrawableForElement()" style="width: 60px; height: 30px; float: left; border: 1px solid #bbd4ef;border-radius:5px;background: #1DACE9">
+                                                <div style="color: #fff;text-align: center;margin-top: 6px">choose</div>
+                                            </div>
+                                            <div onclick="editDrawableForElement()" style="width: 70px; height: 30px; float: left;margin-left: 10px;border: 1px solid #bbd4ef;border-radius:5px;background: #1DACE9">
+                                                <div style="color: #fff;text-align: center;margin-top: 6px">edit/new</div>
+                                            </div>
+                                        </div>
+                                        <div onclick="setSelectorBg()" style="cursor: pointer; margin-top: 5px;margin-left: 10px;float: left">
+                                            <div class="text_style_ui">Selector</div> 
+                                            <div style="width: 50px; height: 30px; float: left; border: 1px solid #bbd4ef;border-radius:5px;"></div>
+                                        </div>
+                                    <div id="hideBackgr" style="width: 100%;height: 100%;background-color: #fffa;position: absolute;display: none"></div>
+                                </div>
+                                <div style="position: relative;width: 100%;padding-bottom: 5px;float: left;clear: both;margin-top: 7px;">
+                                    <div style="float:left;">
+                                        <div class="text_style_ui">below</div>
+                                        <div id="belowParam" class="relativePos"></div>
+                                    </div>
+
+                                    <div style="float:left;margin-left: 5px;">
+                                        <div class="text_style_ui">above</div>
+                                        <div id="aboveParam" class="relativePos"></div>
+                                    </div>
+
+                                    <div style="float:left;clear: both;margin-top:5px;">
+                                        <div class="text_style_ui">toRightOf</div>
+                                        <div id="toRightOfParam" class="relativePos"></div>
+                                    </div>
+
+                                    <div style="float:left;margin-left: 5px;margin-top:5px;">
+                                        <div class="text_style_ui">toLeftOf</div>
+                                        <div id="toLeftOfParam" class="relativePos"></div>
+                                    </div>
+                                    <div id="hideBALR" style="width: 100%;height: 100%;background-color: #fffa;position: absolute;display: none"></div>
+                                </div>
+                                <div id="margParam" style="float: left;clear: both;position:relative;"></div>
+                                <div id="padParam" style="float: left;clear: both;position:relative;"></div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div id="contentAttributes" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;padding-right: 16px;"></div>
+                </div>
+
+                <div id="m_propBody" style="position:absolute;left: 0px;right: 0px;bottom: 10px;top: 50px;height: 26px;margin-top: 10px;display: none">
+                    <div id='m_bmPEhead'>
+                        <div class="m_bmPE" onclick='m_bmStart(this)'>Layout</div>
+                        <div class="m_bmPE" onclick='m_bmStart(this)'>Content</div>
+                    </div>
+                    <div style='height: 5px;background: #c1e1fc'></div>
+
+                    <div id="m_bmPEbody" style="position: absolute;left: 0px;top: 27px;right: 0px;bottom: 10px;overflow-y:auto">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="content_v" onclick="hideSelectEl(event)">
+            <div id="content_src" class="viewport" data-control="scroll" data-colorscr="#ffc700">
+                <div class="content">
+                    <div id="forScroll"></div>
+                    <div id="root_boarder">
+                        <div id="root-g">
+                            <div id="root">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 32px; position: absolute;bottom: 0px;width: 100%">
+                <div id="footer_inf"></div>
+                <div style="float: right; margin-right: 24px;height: 100%">
+                    <img id="scaleMinus" width="24" height="24" onclick="scaleMinus()" style="float: left;margin-top: 2px;cursor: pointer" src="img/minus.png">
+                    <div id="scaleValue" style="float: left;width: 50px;text-align: center;margin-top: 7px">100%</div>
+                    <img id="scalePlus" width="24" height="24" onclick="scalePlus()" style="float: left;margin-top: 2px;cursor: pointer" src="img/plus.png">
+                </div>
+                <div id="dev" style="width: 180px;position: absolute;right: 130px;top: 2px"></div>
+            </div>
+
+        </div>
+        
+        <div id="backEnd" style="z-index: 1;display: none">
+            <div id="servAndTabl" style="position: absolute;left: 0;top: 0;bottom: 0;width: 350px;background-color:#fefeff;border-right: 1px groove #77a;font-size: 14px">
+                <div id="server" style="position: absolute;right: 0;left: 0;height: 150px;border-bottom: 1px solid #1DACE9">
+                    <div class="text_style_ui" style="float: left;margin-top: 5px;margin-left:8px;">Where is the server</div>
+                    <div style="float: left;clear: both;margin-left:5px;width: 280px;border: 1px solid #bbd4ef; border-radius:5px;height:24px;">
+                        <div id="where_serv" style="margin-left: 3px; margin-top: 3px;"></div>
+                    </div>
+                    <div class="text_style_ui" style="float: left;margin-top: 5px;margin-left:8px;">Domain (Base URL)</div>
+                    <div style="float: left;clear: both;margin-left:5px;width: 280px;border: 1px solid #bbd4ef; border-radius:5px;height:24px;">
+                        <div id="descr_host" style="margin-left: 3px; margin-top: 3px;"></div>
+                    </div>
+                    <div style="cursor:pointer;width:180px;height:30px;background:#1DACE9;border-radius:4px;clear: both;margin-left:5px;margin-top:10px;float:left;">
+                        <div id="button_host" style="text-align: center;margin-top:5px;color:#fff"></div>
+                    </div>
+                    <div id="openAdmin" style="cursor:pointer;width:70px;height:30px;background:#1DACE9;border-radius:4px;margin-left:30px;margin-top:10px;float:left;">
+                        <div style="text-align: center;margin-top:5px;color:#fff">Admin</div>
+                    </div>
+                </div>
+                <div id="addTab" style="position: absolute;right: 0;top: 151px;left: 0;background-color: #f7f7ff; height: 30px;text-align: center;border-bottom: 1px solid #1DACE9;cursor: pointer;width: 100%">
+                </div>
+                <div id="listTablesView" style="position: absolute;right: 8px;top: 181px;left: 8px;bottom: 0;">
+                </div>
+            </div>
+        </div>
+        <div id="dataPanel" style="z-index: 1">
+            <div id="dataDescript" style="position: absolute;left: 0;top: 0;bottom: 0;width: 350px;background-color:#fefeff;border-right: 1px groove #77a;font-size: 12px"></div>
+        </div>
+        
+        <div id="popUp" style="position: absolute; background-color: #eee; border: 2px solid #777; z-index: 1001; display: none">
+            <div id="popUpTitle" onmousedown="movePanel(event)" style="top: 0px; width: 100%; height: 20px; cursor: move">
+                <div style="width: 20px; height: 20px; right: 0px; position: absolute; background-color: #ccc; 
+                     cursor: pointer; padding-left: 8px; padding-top: 5px" onclick="closepopUp()">*</div>
+            </div>
+            <div id="popUpContainer" style="padding: 3px">
+
+            </div>
+        </div>
+
+        <div id="n_contextMenu">
+          <div id="n_contextNameOb"></div>
+          <div id="n_contextActive" class="n_contextSub act" onMouseover="n_ovRM(this)" onMouseout="n_outRM(this)" onclick='n_clElement(this)'>Make active</div>
+          <div class="n_contextSub" onMouseover="n_ovRM(this)" onMouseout="n_outRM(this)" onclick='n_clActive(this)'>Active ROOT</div>
+          <hr size="1">
+          <div class="n_contextSub del" onMouseover="n_ovRM(this)" onMouseout="n_outRM(this)" onclick='n_clDelete(this)'>Delete</div>
+        </div>
+
+        <div id="windSelectColor">
+            <div class='titleWind' onmousedown="moveWind(event)">
+                <div class="titleWindName">Color selection</div>
+                <IMG SRC="img/x_blue.png" class='titleWindClose' onclick="closeWind(this)">
+            </div>
+            <div id="windColorBody">
+                <div style="width: 314px; height: 190px; position: absolute; top: 0px; right: 0px">
+                    <div class="picker" id="primary_block" >
+                        <div id="line">
+                            <div id="arrows">
+                                <div class="left_arrow"></div>
+                                <div class="right_arrow"></div>
+                            </div>
+                        </div>
+
+                        <div id="block_picker">
+                            <img src="img/bgGradient.png" class="bk_img">
+                            <div class="circle" id="circle"></div>
+                        </div>
+
+                    </div>
+                    <div style="position:absolute; width:70px; top:0px; right: 5px">
+                        <div id="phonColor"></div>
+                        <div id="old_color"></div>
+                        <div id="out_color"></div>
+                        <div style="position:absolute; top:100px;color:#777">HEX:</div>
+                        <div id="out_color_text" ></div>
+                        <div style="position:absolute; top:135px;color:#777">RGB:</div>
+                        <div id="out_color_rgb" style="position:absolute; top:150px;width: 75px"></div>
+                        <div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="alphaColor"></div>
+                <div id="alpha_pos">
+                    <div id="alpha_arrow" onmousedown="moveAlphaInd(event)"></div>
+                </div>
+
+                <div id="alphaGrad"></div>
+
+                <div style="position: absolute; left: 0px; top: 0px; width: 150px; bottom: 12px;border-right: 1px solid #C5DCFA">
+                    <div id="listColorView">
+                        
+                    </div>
+                    <div id="hideColorList" style="position: absolute; left: 0px; top: 0px; right: 0;bottom: 0; background-color: #0005; display: none"></div>
+                </div>
+
+                <div id="defoultColors" style="position: absolute; right: 5px; top: 230px; width: 310px; height: 91px; background-color: white;">
+                    <div>
+                        <div class="oneColorNam"> </div>
+                        <div class="oneColorTit">Primary</div>
+                        <div class="oneColorTit">Accent</div>
+                        <div class="oneColorTit">Text</div>
+                        <div class="oneColorTit">Gray</div>
+                        <div class="oneColorTit">Error</div>
+                        <div class="oneColorTit">Black</div>
+                        <div class="oneColorTit">White</div>
+                    </div>
+                    <div>
+                        <div class="oneColorNam"> </div>
+                        <div id="presetColor_0" oncontextmenu="changeSystemColor(this);" onclick="setSystemColor(this)" class="oneColorDef"></div>
+                        <div id="presetColor_3" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_12" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_6" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_9" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_15" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef" 
+                             style='color:white;padding-top: 4px;height: 16px;font-size: 10px;text-align: center'>&alpha; 0.5</div>
+                        <div id="presetColor_18" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"
+                             style='color:#333;padding-top: 4px;height: 16px;font-size: 10px;text-align: center;border:1px dashed #333'>&alpha; 0.5</div>
+                    </div>
+                    <div style="float: left;margin-top: 5px">
+                        <div class="oneColorNam">Dark</div>
+                        <div id="presetColor_1" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_4" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_13" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_7" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_10" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_16" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_19" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef" 
+                             style="border:1px dashed #333"></div>
+                    </div>
+                    <div style="float: left;margin-top: 5px">
+                        <div class="oneColorNam">Light</div>
+                        <div id="presetColor_2" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_5" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_14" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_8" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_11" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"></div>
+                        <div id="presetColor_17" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"
+                             style='color:white;padding-top: 4px;height: 16px;font-size: 10px;text-align: center'>&alpha; 0.2</div>
+                        <div id="presetColor_20" onclick="setSystemColor(this)" oncontextmenu="changeSystemColor(this);" class="oneColorDef"
+                             style='color:#333;padding-top: 4px;height: 16px;font-size: 10px;text-align: center;border:1px dashed #333'>&alpha; 0.2</div>
+                    </div>
+                    <div id="hideDefaultColor" style="position: absolute; right: 0px; top: 0px; left: 0;bottom: 0; background-color: #0005; display: none"></div>
+                </div>
+                
+                <div id="hidePresetColor" style="position: absolute; right: 0px; top: 240px; width: 230px; height: 175px; z-index: 10; background-color: #0005; display: none"></div>
+                
+            </div>
+            <div style="position: absolute;width: 316px;height: 52px;border-top: 1px solid #C5DCFA;bottom:0px;right:10px;">
+                <div id="out_color_ok" onclick='setPickerColorResulr()' style="cursor:pointer;width:70px;height:30px;background:#1DACE9;border-radius:4px;
+                     margin-left:15px;margin-top:10px;float:left;">
+                    <div style="text-align: center;margin-top:7px;color:#fff">Ok</div>
+                </div>
+                <div id="out_color_cancel" onclick='cancelSelectColor()' style="cursor:pointer;width:70px;border:1px solid #1DACE9;height:28px;border-radius:4px;margin-left:10px;margin-top:10px;float:left;">
+                    <div style="text-align: center;margin-top:7px;color:#1DACE9">Cancel</div>
+                </div>
+            </div>
+        </div>
+
+        <div id='n_blockAll' onclick="n_hiddenContMenu()" style="background-color: #ccc4; top: 0px;left: 0px;right: 0px;bottom: 0px;z-index: 1000;position: absolute;display: none"></div> <!-- перекриває всі інші елементи, щоб вони не сприймали подій від миші    -->
+        
+        <div id="listProjects" style="position: absolute; top:var(--h_header);left: 0px; right: 0px; bottom: 0px; display:none;background-color:#e5e5e5;z-index:100;">
+            <div style="width: 100%;height: 24px;"><img onclick="closeListProj()" width="18" height="18" style="margin-top: 6px; margin-left: 20px;cursor:pointer" src="img/del_red_pres.png"></div>
+            <div id="listProjectsScr" class="viewport" style="top:24px"></div>
+        </div>
+
+        <div id="loginPanel" style="position: absolute; background:#eee; left: 0;top: 0;right: 0;bottom: 0;
+                display: flex; align-items: center; justify-content: center">
+        </div>
+
+        <div id="shutScreen" style="position: absolute;top: 35px;left: 0;right: 0;bottom: 0; background: #eaeaea;display: none"></div>
+
+        <script src="js/tools/scrollCustom.js"></script>
+        <script src="js/editData/formLogin.js"></script>
+
+    </body>
+</html>

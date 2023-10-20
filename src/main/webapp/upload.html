@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .butt {clear: both; float: left; margin-left: 25px; margin-top: 10px; cursor: pointer; border: 2px threedhighlight outset;
+            padding-left: 5px; padding-right: 5px; background-color: "#ddd"}
+            #progr {
+                position: absolute; display: none;
+                margin-top: 50px;
+                margin-left: 190px;
+                width: 50px;
+                height: 50px;
+/*
+                -webkit-animation: infinite rotate-block 1s;
+                -moz-animation: infinite rotate-block 1s;
+                -o-animation: infinite rotate-block 1s;
+                animation: infinite rotate-block 1s;
+*/
+                
+    -webkit-animation: rotation 2s linear infinite;
+    -moz-animation: rotation 2s linear infinite;
+    -ms-animation: rotation 2s linear infinite
+/*
+                border-left:5px solid #00f;
+                border-top:5px solid #00f;
+                border-radius: 50%
+*/
+            }
+            
+@-webkit-keyframes rotation {
+    0%   { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes rotation {
+    0%   { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); }
+}
+@-ms-keyframes rotation {
+    0%   { -ms-transform: rotate(0deg); }
+    100% { -ms-transform: rotate(360deg); }
+}
+/*
+            @-webkit-keyframes rotate-block {
+              0%   {-webkit-transform: rotate(0deg);}
+              100% {-webkit-transform: rotate(360deg);}
+            }
+            @-moz-keyframes rotate-block {
+              0%   {-moz-transform: rotate(0deg);}
+              100% {-moz-transform: rotate(360deg);}
+            }
+            @-o-keyframes rotate-block {
+              0%   {-o-transform: rotate(0deg);}
+              100% {-o-transform: rotate(360deg);}
+            }
+            @keyframes rotate-block {
+              0%   {transform: rotate(0deg);}
+              100% {transform: rotate(360deg);}
+            }
+*/
+
+
+    #rotor {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      margin: -25px 0 0 -25px;
+      -webkit-animation: spin 1s linear infinite;
+      -moz-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+    @-moz-keyframes spin {
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+        </style>
+        <script>
+            function sendFile() {
+                token.value = window.top.AuthToken;
+                project_id.value = window.top.currentProject.projectId;
+                upload.submit();
+                upload.style.display = "none";
+//                Rotate.start();
+                rotor.style.display = "block";
+                pp.style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <form id="upload" style="height: 170px;" action="upload/image" enctype="multipart/form-data" method="post" accept-charset="windows-1251" target="_self">
+            <br><br>
+            <input type="hidden" name="Auth-token" id="token"/>
+            <input type="hidden" name="projectId" id="project_id"/>
+            <input type="file" id="browse" name="imgFile" multiple onchange="filename.value = browse.files[0].name;" style="display: none"/>
+            <div onclick="browse.click();" style="cursor:pointer;">
+            <input type="text" id="filename" readonly style="width: 250px"/>
+            <input type="button" value="Choose a zip file"/>
+            </div>
+            <br>
+            <br><br>
+            <div class="butt" onclick="sendFile();">Send</div>
+            <div class="butt" id="canc" onclick="window.top.cancelUploadImg();">Cancel</div>
+        </form>
+        <p id="pp" style="display: none">Data is being transferred to the server</p>
+        <img id="rotor" class="image" src="img/progress.png" alt="" style="display: none">
+<!--        
+        <div id="rotor">this will rotate 360 deg like marquee</div>
+
+        <img id="progr" src="img/progress.png">
+-->
+<!--
+        <div id="progr"></div>
+-->
+    </body>
+</html>

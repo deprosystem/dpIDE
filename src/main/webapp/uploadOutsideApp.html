@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .butt {clear: both; float: left; margin-left: 25px; margin-top: 10px; cursor: pointer; border: 2px threedhighlight outset;
+            padding-left: 5px; padding-right: 5px; background-color: "#ddd"}
+            #progr {
+                position: absolute; display: none;
+                margin-top: 50px;
+                margin-left: 190px;
+                width: 50px;
+                height: 50px;
+                -webkit-animation: infinite rotate-block 1s;
+                -moz-animation: infinite rotate-block 1s;
+                -o-animation: infinite rotate-block 1s;
+                animation: infinite rotate-block 1s;
+                border-left:5px solid #00f;
+                border-top:5px solid #00f;
+                border-radius: 50%
+            }
+            @-webkit-keyframes rotate-block {
+              0%   {-webkit-transform: rotate(0deg);}
+              100% {-webkit-transform: rotate(360deg);}
+            }
+            @-moz-keyframes rotate-block {
+              0%   {-moz-transform: rotate(0deg);}
+              100% {-moz-transform: rotate(360deg);}
+            }
+            @-o-keyframes rotate-block {
+              0%   {-o-transform: rotate(0deg);}
+              100% {-o-transform: rotate(360deg);}
+            }
+            @keyframes rotate-block {
+              0%   {transform: rotate(0deg);}
+              100% {transform: rotate(360deg);}
+            }
+        </style>
+        <script>
+            function sendFile() {
+                dir_upload.value = window.top.dirUploadFile;
+                upload.submit();
+                upload.style.display = "none";
+                progr.style.display = "block";
+                pp.style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <form id="upload" style="height: 170px; background: gold" action="commander/upload_zip" enctype="multipart/form-data" method="post" accept-charset="windows-1251" target="_self">
+            <br><br>
+            <input type="hidden" name="dirUpload" id="dir_upload"/>
+            <input type="file" id="browse" name="imgFile" multiple onchange="filename.value = browse.files[0].name;" style="display: none"/>
+            <div onclick="browse.click();" style="cursor:pointer;">
+            <input type="text" id="filename" readonly style="width: 250px"/>
+            <input type="button" value="Choose a zip file"/>
+<!--            <input type="button" value="Choose a zip file" id="fakeBrowse" onclick="browse.click();"/>      -->
+            </div>
+            <br>
+            <br><br>
+            <div class="butt" onclick="sendFile();">Send</div>
+            <div class="butt" id="canc" onclick="window.top.cancelUploadImg();">Cancel</div>
+        </form>
+        <p id="pp" style="display: none">Data is being transferred to the server</p>
+        <div id="progr"></div>
+    </body>
+</html>

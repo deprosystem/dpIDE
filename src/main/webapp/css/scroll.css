@@ -1,0 +1,22 @@
+.viewport {right: 6px; overflow: hidden; position: absolute; left: 0; top: 0px; bottom: 6px;-webkit-user-select: none; user-select: none;}
+.content {position: absolute;overflow-x: scroll; left: 0; top: 0; right:-17px;bottom: -17px; overflow-y: scroll;}
+
+.viewportItem {overflow: hidden; -webkit-user-select: none; user-select: none;}
+.contentItem {left: 0; top: 0; right:-17px;bottom: 0; overflow-y: scroll;}
+
+.scrollbar_y, .scroller_y {width: 5px; position: absolute; top: 0;}
+.scrollbar_y {right: 0px; bottom: 0;}
+.scroller_y {left: 0; border-radius: 2px; background: var(--c_scroll); cursor: pointer;}
+.scroll_line_y {width: 1px; position: absolute; top: 0;right: 1.5px; bottom: 0;background:var(--c_scroll);}
+
+.scrollbar_x, .scroller_x {height: 5px; position: absolute; left: 0;}
+.scrollbar_x {right: 0px; bottom: 0;}
+.scroller_x {bottom: 0; border-radius: 2px; background: var(--c_scroll); cursor: pointer;}
+.scroll_line_x {height: 1px; position: absolute; left: 0;right: 0; bottom: 1.5px;background:var(--c_scroll);}
+
+
+.scrollbar, .scroller {width: 5px; position: absolute; top: 0;}
+.scrollbar {right: 0px; bottom: 0;}
+.scroller {left: 0; border-radius: 2px; background: var(--c_scroll); cursor: pointer;}
+.scroll_line {width: 1px; position: absolute; top: 0;right: 1.5px; bottom: 0;background:var(--c_scroll);}
+

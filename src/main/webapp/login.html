@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="Windows-1251">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!--
+        <link href="https://fonts.googleapis.com/css?family=Proxima Nova" rel="stylesheet">
+-->
+        <style>
+            html,body {margin:0;}
+            body {font-family: 'Proxima Nova', sans-serif;font-size:12px;}
+            .progress_center {position: absolute;top: 50%;left: 50%;width: 50px;margin-left: -25px;margin-top: -25px;height: 50px;-webkit-animation: infinite rotate-block 1s;-moz-animation: infinite rotate-block 1s;
+                    -o-animation: infinite rotate-block 1s;animation: infinite rotate-block 1s;}
+            .logreg {font-size:24px;text-align:center;margin-top:30px;margin-bottom:14px;}
+            .input_style {border: 1px solid #bbd4ef;margin-left:30px;border-radius:5px;height:28px;padding-left:4px;font-size:14px;width:280px}
+            .text_style {font-size:10px;margin-left:30px;margin-top:16px;}
+            .dataWindow {z-index: 100; position: absolute;background:#ffffff; border: 1px solid #1dace9;top:35px;box-shadow: 0px 30px 100px rgba(0, 0, 0, 0.1);border-radius: 5px;}
+.titleWind {height: 56px;background:#f3f8ff;cursor:move;border-radius: 5px 5px 0px 0px;}
+.titleWindName {float: left; padding-left: 16px;font-size:18px;margin-top:16px;font-family:Proxima Nova;font-style:normal;font-weight: bold;}
+.titleWindClose {float: right; margin-top: 20px; margin-right: 20px;cursor: pointer;}
+.futer_wind {position:absolute;height:56px;left:0px;right:0px;bottom:0px;border-top: 1px solid #1dace9}
+.button_blue {cursor:pointer;width:100px;height:30px;background:#1DACE9;border-radius:4px;margin-left:30px;margin-top:10px;float:left;
+             box-shadow:0px 4px 15px rgba(29, 172, 233, 0.3);}
+@-webkit-keyframes rotate-block {0%   {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}
+@-moz-keyframes rotate-block {0%   {-moz-transform: rotate(0deg);}100% {-moz-transform: rotate(360deg);}}
+@-o-keyframes rotate-block {0%   {-o-transform: rotate(0deg);}100% {-o-transform: rotate(360deg);}}
+@keyframes rotate-block {0%   {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
+/*
+    #rotor {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      margin: -25px 0 0 -25px;
+      -webkit-animation: spin 1s linear infinite;
+      -moz-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+    }
+    @-moz-keyframes spin {
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @keyframes spin {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+*/
+        </style>
+        
+        <script src="js/tools/formWind.js"></script>
+        <script src="js/tools/tool.js"></script>
+        <script src="js/tools/dialogError.js"></script>
+        <script src="js/ajax/ajax.js" ></script>
+
+        <script>
+            currentProject = null;
+            function setRegister() {
+                nameUs.style.display = "block";
+                nameUsT.style.display = "block";
+                register.style.display = "none";
+                title.innerHTML = "Register";
+                nameUs.focus();
+            }
+            
+            function sendAuth() {
+                let data;
+                let url;
+                if (nameUs.style.display == "block") {
+                    url = "auth/register";
+                    data = JSON.stringify({userName: nameUs.value, login: login.value, password: password.value});
+                } else {
+                    url = "auth/login";
+                    data = JSON.stringify({login: login.value, password: password.value});
+                }
+                doServer("POST", url, cbLoginRegistr, data, null, form_auth);
+//                doServer("POST", url, cbLoginRegistr, data, null, null, cbError);
+//                progr.style.display = "block";
+            }
+/*
+            function cbError(res) {
+                progr.style.display = "none";
+            }
+*/
+            function cbLoginRegistr(res) {
+                window.top.initialView(res);
+            }
+
+            function keyUpSend(e) {
+                if (e.which == 13) {
+                    sendAuth();
+                }
+            }
+        </script>
+    </head>
+    <body Onload = "login.focus();">
+        <form id="form_auth" action="auth/login" method="post" accept-charset="Windows-1251" target="_self">
+            <div id="title" class="logreg">Login</div>
+            <div class="text_style" id="nameUsT" style="display:none">Name</div>
+            <input class="input_style" style="display:none" id="nameUs" type="text" name="name" size="15">
+
+            <div class="text_style">Login</div>
+            <input class="input_style" id="login" type="text" name="login" size="15" onkeyup="keyUpSend(event)">
+
+            <div class="text_style">Password</div>
+            <input class="input_style" id="password" type="password" name="password" size="15"  onkeyup="keyUpSend(event)">
+
+            <div class="futer_wind">
+                <div onclick="sendAuth()" class="button_blue">
+                    <div style="text-align: center;margin-top:7px;color:#fff">Send</div>
+                </div>
+                <div id="register" onclick="setRegister()" style="cursor:pointer;width:100px;height:30px;border:1px solid #1DACE9;border-radius:4px;margin-left:20px;
+                     margin-top:10px;float:left;">
+                    <div style="text-align: center;margin-top:7px;color:#1DACE9">Register</div>
+                </div>
+            </div>
+        </form>
+<!--
+        <div id="progr" style="position:absolute;left:0;top: 0;right: 0;bottom: 0;display: none;background-color: white">
+            <img id="rotor" src="img/progress.png" alt="">
+        </div>
+-->
+    </body>
+</html>

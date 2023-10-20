@@ -1,0 +1,10 @@
+package #pack#;
+
+import com.dpcsa.compon.base.BaseActivity;
+
+public class #start_act# extends BaseActivity {
+    @Override
+    public String getNameScreen() {
+        return MyDeclare.#start_screen#;
+    }
+}
