@@ -1,5 +1,5 @@
 var listEvents = "click,change";
-var handlerGroups = [ 
+var handlerGroups = [
     {group:"Navigation",items:"start,back,backOk,finishDialog,setMenu,nextScreen,actual"},
     {group:"Components",items:"add item list,delete item list"},
     {group:"Variables",items:"addVar,delVar,cleanVar,cleanCopyVar,restoreVar,setVar,writeVar,saveViewInParams,addParam,setParam,setValueParam,Clear form fields"},

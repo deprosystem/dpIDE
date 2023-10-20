@@ -390,7 +390,6 @@ public class ExportResult extends BaseServlet {
             for (int i = 0; i < ik; i++) {
                 Screen sc = parSave.sreens.get(i);
                 String scName = sc.screenName.toLowerCase();
-//System.out.println("scName="+scName+"<<");
                 String type = "activity";
                 if (sc.typeScreen == 1) {
                     type = "fragment";
