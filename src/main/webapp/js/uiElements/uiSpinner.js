@@ -82,7 +82,7 @@ function uiSpinner() {
         if (p.componParam.st_2 != null && p.componParam.st_2.length > 0) {
             img.src = p.componParam.st_2;
         }
-    }
+    };
     
     this.createDivSpin = function(p, newEl) {
         if (p.typeUxUi == "ux") {
@@ -100,35 +100,12 @@ function uiSpinner() {
         newEl.append(typeEl);
         
         let px24 = 24 * DENSITY + "px";
-        let img = newDOMelement('<img src="img/android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
-/*
-        img.style.width = px24;
-        img.style.height = px24;
-        img.style.position = "absolute";
-        img.style.right = "0";
-        img.src = "img/android_arrow_down.png";
-*/
+        
+        let img = newDOMelement('<img src="mipmap/res/mipmap-xhdpi/_syst_android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
+//        let img = newDOMelement('<img src="img/android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
         newEl.append(img);
-        
-        
-        
-/*
-        let ACTIVE_r = ACTIVE;
-        let currentElement_r = newEl;
-        setActive(newEl);
 
-        txtView = formImg({name:""});
-        txtView.style.outline = "";
-        let p1 = txtView.android;
-        p1.width = 24;
-        p1.height = 24;
-        p1.gravLayout.h = 2;
-        p1.src = "img/android_arrow_down.png";
-        currentElement.android.viewElement = currentElement;
-        currentElement = newEl;
-        setActive(ACTIVE_r);
-*/
-    }
+    };
 }
 
 

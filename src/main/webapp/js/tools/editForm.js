@@ -435,7 +435,7 @@ function EditForm(meta, data, domEl, after, cbEdit, marg, margTop, isScreen, mar
             case "Choose":
                 inp = newDOMelement('<div style="width:60px;height:28px;background-color:#1DACE9;float:left;' 
                         +'border-radius:4px;cursor:pointer;"><div style="text-align: center;margin-top:5px;color:#fff">Choose</div></div>');
-                inp.addEventListener('click', () => {this.cb.clickChoose(inp, met)}, false);
+                inp.addEventListener('click', () => {this.cb.clickChoose(inp, met);}, false);
                 inp.nameField = met.name;
                 res.append(inp);
                 break;

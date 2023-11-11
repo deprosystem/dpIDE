@@ -49,7 +49,7 @@ function hideControlHeader() {
     }
     ux_ui_w.style.display = "none";
     emulator.style.display = "none";
-    palette.style.display = "none";
+//    palette.style.display = "none";
     dataControll.style.display = "block";
     hostDomain = currentProject.host;
     if (dataDescript.children.length == 0) {
@@ -67,7 +67,7 @@ function showControlHeader() {
     }
     ux_ui_w.style.display = "block";
     emulator.style.display = "block";
-    palette.style.display = "block";
+//    palette.style.display = "block";
     dataControll.style.display = "none";
 }
 
@@ -207,7 +207,7 @@ function oneQueryView(item, el) {
     }
     let oneDiv = '<div onclick="editQuery(' + item.id_query + ')" style="float:left;width:100%;height:36px;overflow: hidden;cursor:pointer;border-bottom:1px solid #aaf;clear:both;position:relative">'
                     +'<img src="img/' + img + '.png" style="width:24px;height:24px;position:absolute;top:3px;left:3px;">'
-                    +'<div class="name_t" style="font-size:14px;color:#000;position:absolute;top:1px;left:30px">' + item.name_query + '</div>'
+                    +'<div class="name_t" style="font-size:14px;color:#000;position:absolute;top:1px;left:30px">' + item.name_query + ' (id=' + item.id_query + ')</div>'
                     +'<div class="descr_t" style="font-size:10px;color:#555;position:absolute;top:17px;left:30px;right:20px;height:14px;overflow:hidden">' + descr + '</div>'
                     +'<img onclick="deleteQuertAdm(' + item.id_query + ');" style="position:absolute;top:11px;right:7px;cursor:pointer;" width="10" height="10" src="img/del_red.png">'
                 +'</div>';

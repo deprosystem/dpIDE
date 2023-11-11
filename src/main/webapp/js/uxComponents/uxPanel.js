@@ -88,8 +88,10 @@ function createViewForPanelV(el) {
                     isSpinner = true;
                 }
                 if (imgId != i) {
-                    formElement(item, "", namePrev, topM);
-                    namePrev = item.name;
+                    let resForm = formElement(item, "", namePrev, topM);
+                    if (resForm) {
+                        namePrev = item.name;
+                    }
                     if (item.type == "Gallery") {
                         estimatedHeight += 242;
                     } else {

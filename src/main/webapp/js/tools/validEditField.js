@@ -20,7 +20,7 @@ function validName(e) {
 function validNameParam(e) {
     var k = e.key;
     var kUp = k.toUpperCase();
-    if ((kUp >= "A" && kUp <= "Z") || kUp == "_" || (kUp >= "0" && kUp <= "9") || 
+    if ((kUp >= "A" && kUp <= "Z") || kUp == "_" || (kUp >= "0" && kUp <= "9") || k == "=" || kUp == "+" || k == "-" ||
             k == 'ArrowLeft' || k == 'ArrowRight' || k == 'Delete' || k == 'Backspace' || k == 'Shift' || k == 'Alt')  {
         let el = e.target;
         if (el.selectionStart == 0 && k >= "0" && k <= "9") {

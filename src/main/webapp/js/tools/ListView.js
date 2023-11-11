@@ -16,24 +16,20 @@ function ListView(adapter, container, selColor) {
             if (i == selPos) {
                 itemV.style.backgroundColor = selColor;
             }
-            itemV.addEventListener("click", () => {this.clickItem(itemV)}, false);
+            itemV.addEventListener("click", () => {this.clickItem(itemV);}, false);
             container.append(itemV);
         }
 //        this.children = container.children;
         if (this.scroll_y != null) {
             this.scroll_y.resize();
         }
-    }
-/*
-    this.getSelectItem = function() {
-        return this.list[adapter.getSelectItemPos()];
-    }
-*/
+    };
+
     this.editItem = function (met) {
         let wind = adapter.chooseEditForm();
         wind.innerHTML = "";
         new EditForm(met.meta, this.list[adapter.getSelectItemPos()].param, wind, null, this);
-    }
+    };
     
     this.addItem = function() {
         this.list.push(adapter.getNewItem());
@@ -51,7 +47,7 @@ function ListView(adapter, container, selColor) {
         if (this.scroll_y != null) {
             this.scroll_y.resize();
         }
-    }
+    };
     
     this.clickItem = function(el) {
         let selPos = adapter.getSelectItemPos();
@@ -61,7 +57,7 @@ function ListView(adapter, container, selColor) {
         selPos = el.positInListView;
         adapter.setSelectItemPos(selPos);
         container.children[selPos].style.backgroundColor = selColor;
-    }
+    };
     
     this.cbEdit = function() {
         let pos = adapter.getSelectItemPos();
@@ -70,12 +66,12 @@ function ListView(adapter, container, selColor) {
         let res = ch[pos];
         res.innerHTML = "";
         adapter.viewOneContent(res, item);
-    }
+    };
     
     this.chooseItem = function(met, ww) {
         closeDataWindow(ww);
         adapter.setChooseResult(met.name);
-    }
+    };
  
     this.creteList();
 }

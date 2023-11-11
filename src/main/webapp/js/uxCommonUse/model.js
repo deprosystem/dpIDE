@@ -234,19 +234,6 @@ function editDataModel(el, ind) {
             }
             break;
     }
-/*
-    if (selectMethodInModel == "TEST") {
-        editDataWind(metaModel, currentComponentDescr.model.data[0], cbSaveDataModel);
-    } else if (hostDescr == "Third party API") {
-            editDataWind(metaModel, currentComponentDescr.model.data[num], cbSaveDataModel);
-        } else {
-//            editQueryWind();
-//            setModelParam();
-            let tt = currentComponentDescr.type;
-//            let isFormForQuery = tt == "Form" || tt == "ScrollForm";
-            new FieldsFromSource(currentComponentDescr.model, num, currentComponentDescr.type.indexOf("Form") > -1);
-        }
-*/
 }
 
 function setModelParam() {

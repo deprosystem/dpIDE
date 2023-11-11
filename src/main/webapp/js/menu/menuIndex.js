@@ -13,8 +13,9 @@ listMenu_UX[0].children = new Array(
         {nameI : 'Delete project', func : deleteProject, dependProject : true});
 listMenu_UX[1] = {nameM : 'Properties ', children : [
         {nameI : 'Push notifications', func : pushProject, dependProject : true},
-//        {nameI : 'Push notifications on the server', func : pushServerParam, dependProject : true},
-        {nameI : 'Multi-language support', func : multilingualV, dependProject : true}
+        {nameI : 'Multi-language support', func : multilingualV, dependProject : true},
+        {nameI : 'Palette', func : setPalette, dependProject : true}
+//        {nameI : "Palette", func : setPalette, dependProject : true}
     ]};
 listMenu_UX[2] = {nameM : 'Screens '};
 listMenu_UX[2].children = new Array(

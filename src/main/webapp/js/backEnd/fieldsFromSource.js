@@ -54,7 +54,16 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
         this.fQueryPort = formViewScrolY(this.fQuery);
         this.fieldsQuery = this.fQueryPort.querySelector(".viewData");
         this.wind = wind;
-        if (this.model.idQuery == -1) {
+
+/*
+model={"method":15,
+    "data":[[{"name":"img","type":"Img","edit":"Field"},{"name":"title","type":"Text","edit":"Field"},
+            {"name":"marka","type":"Text","edit":"Field"},{"name":"model","type":"Text","edit":"Field"},{"name":"year","type":"Text","edit":"Field"},
+            {"name":"mileage","type":"Int","edit":"Field"},{"name":"praice","type":"Int","edit":"Field"},{"name":"gal","type":"Gallery","edit":"Field"},
+            {"name":"id_user","type":"Long","edit":"Profile"}]],
+    "progr":"standard","bool_1":false,"param":"","url":"query/czeux6pkp1l73gb/6"}
+*/
+        if (this.model.idQuery == -1) { // Здесь id или Query или table. В зависимости от choiseSource.source
             this.model.idQuery = null;
         }
         if (this.model.idQuery != null) {
@@ -64,11 +73,11 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
                 this.setFieldsSource_1(item);
             }
         }
-    }
+    };
 
     this.changeQuery = function() {
         this.choiseSource.choiceSource();
-    }
+    };
 
     this.setFieldsSource_1 = function(item) {
         if (item.id != null) {
@@ -80,7 +89,6 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
         this.fieldsQuery.innerHTML = "";
         this.fieldsView.innerHTML = "";
         setTitleWind(this.wind, "Specify fields for view from the " + this.choiseSource.source + " <span style='color:#009fff;font-size:22px'>" + item.name + "</span>");
-
         let fildsQu = JSON.parse(item.fields);
         let ik = fildsQu.length;
         for (let i = 0; i < ik; i++) {
@@ -105,7 +113,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
         }
         this.fQueryPort.scroll_y.resize();
         this.setFieldsView ();
-    }
+    };
     
     this.setFieldsView = function() {
         let data = this.model.data[this.ind];
@@ -126,7 +134,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
             }
         }
         this.setViewAllImg();
-    }
+    };
     
     this.selFieldInQu = function(el) {
         if (checkElement(el)) {
@@ -135,13 +143,13 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
             this.delFieldsInQuery(el);
         }
         this.setViewAllImg();
-    }
+    };
     
     this.addFieldsInQuery = function(el, ed) {
         let cont = el.closest('.cont_f');
         this.oneFieldView(cont, ed);
         this.fViewPort.scroll_y.resize();
-    }
+    };
     
     this.delFieldsInQuery = function(el) {
         let cont = el.closest('.cont_f');
@@ -156,7 +164,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
                 break;
             }
         }
-    }
+    };
     
     this.oneFieldView = function(item, ed) {
         let cont = newDOMelement('<div class="field" style="float:left;width:100%;position:relative;height:28px;overflow: hidden;border-bottom:1px solid #aaf;clear:both"></div>');
@@ -197,7 +205,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
             cont.append(selField);
         }
 */
-    }
+    };
     
     this.setViewAllImg = function() {
         let child = this.fieldsQuery.children;
@@ -245,7 +253,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
             }
 
         }
-    }
+    };
     
     this.delAllFields = function() {
         let child = this.fieldsQuery.children;
@@ -258,7 +266,7 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
                 sel.src = "img/check-act.png";
             }
         }
-    }
+    };
     
     this.saveFieldsSource = function() {
         if (this.ind == 0 && this.idNewQuery != this.model.idQuery) {
@@ -270,18 +278,23 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
             }
         }
         this.model.param = this.paramQuery;
-//console.log("this.model.param="+this.model.param+"<<");
         let fieldsQQ = this.fieldsView.children;
         ik = fieldsQQ.length;
         let data = this.model.data[this.ind];
         data.length = 0;
         for (let i = 0; i < ik; i++) {
             let item = fieldsQQ[i];
-            let itemData = {name:item.name_field,type:item.type_field};
-//console.log("saveFieldsSource itemData="+JSON.stringify(itemData));
+            let itemData;
+            if (this.editC) {
+                let sel = item.querySelector(".sel");
+                let selV = sel.options[sel.selectedIndex].value;
+                itemData = {name:item.name_field,type:item.type_field,edit:selV};
+            } else {
+                itemData = {name:item.name_field,type:item.type_field};
+            }
             data.push(itemData);
         }
-    }
+    };
     
     this.init();
 }

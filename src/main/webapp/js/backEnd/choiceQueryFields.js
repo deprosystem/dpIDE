@@ -12,7 +12,7 @@ function ChoiceQueryFields() {
         } else {
             this.formListQuerys();
         }
-    }
+    };
     
     this.getSourceById = function(id) {
         this.oper = 1;
@@ -22,7 +22,7 @@ function ChoiceQueryFields() {
         } else {
             this.getById();
         }
-    }
+    };
     
     this.cbDoServer = function(res, param) {
         listQuerys = JSON.parse(res);
@@ -34,7 +34,7 @@ function ChoiceQueryFields() {
                 this.formListQuerys();
                 break;
         }
-    }
+    };
     
     this.getById = function() {
         let ik = listQuerys.length;
@@ -45,7 +45,7 @@ function ChoiceQueryFields() {
                 break;
             }
         }
-    }
+    };
     
     this.formListQuerys = function() {
         listQuerys.sort(function(a, b){
@@ -64,10 +64,11 @@ function ChoiceQueryFields() {
             let scr = wind.closest('.viewport');
             scr.scroll_y.resize();
         }
-    }
+    };
     
     this.oneQueryView = function(i, el) {
         let item = listQuerys[i];
+console.log("oneQueryView item="+JSON.stringify(item));
         let descr = item.title_query;
         if (descr == null) {
             descr = "";
@@ -79,11 +80,12 @@ function ChoiceQueryFields() {
         let cont = newDOMelement(oneDiv);
         cont.addEventListener("click", () => {this.selectQuery(i, el);}, true);
         el.appendChild(cont);
-    }
+    };
     
     this.selectQuery = function(i, el) {
         closeDataWindow(el);
         let item = listQuerys[i];
+console.log("selectQuery item="+JSON.stringify(item));
         this.cb.setFieldsSource_1({id:item.id_query,name:item.name_query,fields:item.fields_result,param:item.param_query});
-    }
+    };
 }

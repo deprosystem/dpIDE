@@ -12,7 +12,7 @@ function ChoiceTableFields() {
         } else {
             this.formListTables();
         }
-    }
+    };
     
     this.getSourceById = function(id) {
         this.oper = 1;
@@ -22,7 +22,7 @@ function ChoiceTableFields() {
         } else {
             this.getById();
         }
-    }
+    };
     
     this.cbDoServer = function(res, param) {
         listTables = JSON.parse(res);
@@ -34,7 +34,7 @@ function ChoiceTableFields() {
                 this.formListTables();
                 break;
         }
-    }
+    };
     
     this.getById = function() {
         let ik = listTables.length;
@@ -42,11 +42,9 @@ function ChoiceTableFields() {
             let item = listTables[i];
             if (item.id_table == this.id) {
                 this.cb.setFieldsSource_1({name:item.name_table,fields:item.fields_table});
-//                return {name_query:item.name,fields_result:fields_table};
             }
         }
-//        return null;
-    }
+    };
     
     this.formListTables = function() {
         listTables.sort(function(a, b){
@@ -65,7 +63,7 @@ function ChoiceTableFields() {
             let scr = wind.closest('.viewport');
             scr.scroll_y.resize();
         }
-    }
+    };
     
     this.oneQueryView = function(i, el) {
         let item = listTables[i];
@@ -80,13 +78,13 @@ function ChoiceTableFields() {
         let cont = newDOMelement(oneDiv);
         cont.addEventListener("click", () => {this.selectTab(i, el);}, true);
         el.appendChild(cont);
-    }
+    };
     
     this.selectTab = function(i, el) {
         closeDataWindow(el);
         let item = listTables[i];
         this.cb.setFieldsSource_1({id:item.id_table,name:item.name_table,fields:item.fields_table});
-    }
+    };
 }
 
 

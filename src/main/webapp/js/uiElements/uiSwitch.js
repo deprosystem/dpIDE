@@ -21,7 +21,7 @@ function uiSwitch() {
         {name: "color_6", title:"On",type:"Color"},
         {name: "color_7", title:"Unavailable",type:"Color"},
         {name: "int_5", title:"Diameter",type:"SelBlock",min:1,max:40,step:1,value:"8,10,12,14,18,20,22,24,28,30,36"}
-    ]
+    ];
     
     let meta = [
         {name: "st_1", title:"Value",rows:2,type:"Textarea",br:true},
@@ -36,11 +36,11 @@ function uiSwitch() {
             
     this.setElementUI = function(p, newEl, parent) {
         newEl.appendChild(this.createDivSwitch(p));
-    }
+    };
     
     this.newElementUI = function(p) {
         return this.createDivSwitch(p);
-    }
+    };
     
     this.setContent = function(p) {
         if (this.data == null) {
@@ -48,7 +48,7 @@ function uiSwitch() {
         }
         contentAttributes.innerHTML = "";
         let dd = new EditForm(meta, p, contentAttributes, null, this);
-    }
+    };
     
     this.cbEdit = function(fieldName) {
         if (fieldName == "int_1") {
@@ -58,7 +58,7 @@ function uiSwitch() {
         } else {
             viewCompon();
         }
-    }
+    };
     
     this.viewElementUI = function(p, el) {
         el.innerHTML = "";
@@ -191,11 +191,12 @@ function uiSwitch() {
         contThumb.appendChild(thumb);
         contTrack.appendChild(track);
         return switchCont;
-    }
+    };
 
     this.clickChoose = function(el, met) {
+console.log("SWITCH clickChoose");
         new WindListView(this, met, 250, 500, 40, -400, "Switch styles");
-    }
+    };
     
     this.viewOneContent = function(res, item) {
         isStylesSpecChange = true;
@@ -291,11 +292,11 @@ function uiSwitch() {
                 +';border-radius:' + (hThumb / 2) + 'px;' + thumbTopBoot + '"></div>');
         contThumb.appendChild(thumb);
         contTrack.appendChild(track);
-    }
+    };
     
     this.chooseEditForm = function() {
         return formWind(370, 500, 100, -20, "Switch style options", null, null, null, null, "");
-    }
+    };
 
     this.getList = function() {
         return ListStyleSpec;
@@ -306,7 +307,7 @@ function uiSwitch() {
         let res = newDOMelement('<div style="width:100%;height:40px;border-bottom:1px solid #1dace9;display:flex;align-items:center;"></div>');
         this.viewOneContent(res, item);
         return res;
-    }
+    };
     
     this.addItem = function(ch) {
         let item = JSON.parse(JSON.stringify(ListStyleSpec[activeStyleSpecPos]));
@@ -318,11 +319,11 @@ function uiSwitch() {
         let itemV = this.createOneItem(activeStyleSpecPos);
         itemV.style.backgroundColor = "#f6faff";
         return itemV;
-    }
+    };
     
     this.getSelectItemPos = function() {
         return activeStyleSpecPos;
-    }
+    };
     
     this.setSelectItemPos = function(pos) {
         activeStyleSpecPos = pos;
@@ -333,20 +334,20 @@ function uiSwitch() {
         item.id = ListStyleSpec.length;
         isStylesSpecChange = true;
         return item;
-    }
+    };
     
     this.clickItem = function(ch, pos) {
         ch[activeStyleSpecPos].style.backgroundColor = "";
         activeStyleSpecPos = pos;
         ch[activeStyleSpecPos].style.backgroundColor = "#f6faff";
-    }
+    };
     
     this.setChooseResult = function(fieldName) {
         let item = ListStyleSpec[activeStyleSpecPos]
         this.data[fieldName] = item.id;
         this.data.componParam.int_1 = item.id;
         viewCompon();
-    }
+    };
     
     this.getParamSwitch = function(id) {
         let ik = ListStyleSpec.length;
@@ -357,7 +358,11 @@ function uiSwitch() {
             }
         }
         return null;
-    }
+    };
+    
+    this.getHelpLink = function() {
+        return "https://docs.google.com/document/d/1iYRvK_JAz67laVPot_pCEUa0sM9Jp3hSJZMMG4qmtxQ/edit#bookmark=id.jxr2x8xa4zdm";
+    };
 }
 
 

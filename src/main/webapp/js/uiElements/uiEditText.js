@@ -66,11 +66,11 @@ function uiEditText() {
         {name: "st_10", title:"Show",len:80,type:"Img",clazz:"pass_attr",br:true},
         {name: "st_11", title:"Hide",len:80,type:"Img"},
         {name: "st_12", title:"Equals",len:80,type:"SelectId",tags:"EditText",clazz:"pass_attr"}
-    ]
+    ];
 
     this.setElementUI = function(p, newEl, parent) {
         newEl.appendChild(createDivEditText(newEl));
-    }
+    };
     
     this.newElementUI = function(p) {
         p.text = "";

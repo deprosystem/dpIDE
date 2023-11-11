@@ -100,6 +100,7 @@ public class ExportResult extends BaseServlet {
         parSave.strings = gson.fromJson(projectM.strings, ListItemResurces.class);
         parSave.switchSpec = gson.fromJson(projectM.style_spec, ListSwitchParam.class);
         parSave.styleCheck = gson.fromJson(projectM.style_check, ListSwitchParam.class);
+        parSave.styleCheck_3 = gson.fromJson(projectM.style_check_3, ListSwitchParam.class);
         if (projectM.languages != null && projectM.languages.length() > 2) {
             parSave.lang = gson.fromJson(projectM.languages, Lang.class);
         }
@@ -170,7 +171,11 @@ public class ExportResult extends BaseServlet {
                 
                 copyFile(realPath + "/android_base/compon-release.aar", basePath + userProjPath + "/app/libs/compon-release.aar");
                 if (isSerwer) {
-                    copyFile(realPath + "/android_base/gradle_prop_serv", basePath + userProjPath + "/gradle.properties");
+                    if (ds.query.equals("/export/android")) {
+                        copyFile(realPath + "/android_base/gradle_prop_local", basePath + userProjPath + "/gradle.properties");
+                    } else {
+                        copyFile(realPath + "/android_base/gradle_prop_serv", basePath + userProjPath + "/gradle.properties");
+                    }
                 } else {
                     copyFile(realPath + "/android_base/gradle_prop", basePath + userProjPath + "/gradle.properties");
                 }
@@ -179,7 +184,22 @@ public class ExportResult extends BaseServlet {
 //                copyFile(realPath + "/android_base/local.properties", basePath + userProjPath + "/local.properties");
                 setFileAndroid(realPath + "/android_base/settings", basePath + userProjPath + "/settings.gradle", arChange);
 
+                PrintWriter writer;
+                try {
+                    writer = new PrintWriter(basePath + userProjPath +  "/local.properties", "UTF-8");
+                    if (isSerwer) {
+                        writer.println("sdk.dir=/home/jura/android/cmdline-tools");
+                    } else {
+                        writer.println("sdk.dir=C\\:\\\\Users\\\\Yurii\\\\AppData\\\\Local\\\\Android\\\\Sdk");
+                    }
+                    writer.flush();
+                    writer.close();
+                } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    System.out.println("Error form local.properties " + ex);
+                }
+                
                 if (ds.query.equals("/export/apk")) {
+/*
                     PrintWriter writer;
                     try {
                         writer = new PrintWriter(basePath + userProjPath +  "/local.properties", "UTF-8");
@@ -193,7 +213,7 @@ public class ExportResult extends BaseServlet {
                     } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                         System.out.println("Error form local.properties " + ex);
                     }
-
+*/
                     List<String> progr = new ArrayList();
                     if (isSerwer) {
 //                        progr.add("gradle");
@@ -443,7 +463,6 @@ public class ExportResult extends BaseServlet {
                 if (pushStart.length() > 0) {
                     declare.add(tab12 + ".pushNavigator(" + pushStart + ")\n");
                 }
-//System.out.println("pushStart="+pushStart+"<<");
                 String initData = "";
                 if (sc.initData != null && sc.initData.size() > 0) {
                     int dk = sc.initData.size();
@@ -710,8 +729,17 @@ public class ExportResult extends BaseServlet {
                                 if (mi.icon != null && mi.icon.length() > 0) {
                                     stIcon = dravableFromUrl(mi.icon);
                                 }
+                                String nameDot = mi.screen;
+                                if (nameDot == null || nameDot.length() == 0) {
+                                    nameDot = String.valueOf(m);
+                                }
+                                String badgeSt = "";
+                                if (mi.badge != null && mi.badge.length() > 0) {
+                                    badgeSt = ").badge(\"" + mi.badge + "\"";
+                                }
+                                String ttt = formStringId(scName, cViewId, nameDot, mi.title, listString);
                                 menu.add("        .item(" + stIcon + ", "
-                                        + formStringId(scName, cViewId, mi.screen, mi.title, listString) + screenM + startScr + endM);
+                                        + ttt + screenM + startScr + badgeSt + endM);
                             }
                             navMenuB = "";
                             if (comp.navigator != null && comp.navigator.size() > 0) {
@@ -749,8 +777,12 @@ public class ExportResult extends BaseServlet {
                                 if (mi.enabled != null && mi.enabled.equals("Auth")) {
                                     stEnabled = ").enabled(1";
                                 }
+                                String badgeSt = "";
+                                if (mi.badge != null && mi.badge.length() > 0) {
+                                    badgeSt = ").badge(\"" + mi.badge + "\"";
+                                }
                                 menu.add("        .item(" + dravableFromUrl(mi.icon) + ", "
-                                        + formStringId(scName, cViewId, mi.screen, mi.title, listString) + screenM + startScr + stEnabled + endM);
+                                        + formStringId(scName, cViewId, mi.screen, mi.title, listString) + screenM + startScr + stEnabled + badgeSt + endM);
                                 if (mi.divider != null && mi.divider) {
                                     if (m == mk1) {
                                         menu.add("        .divider();\n");
@@ -949,6 +981,7 @@ public class ExportResult extends BaseServlet {
                     parSave.addClassPath.add("classpath 'com.google.gms:google-services:4.3.3'");
                     parSave.havePush = true;
                 }
+/*
                 if (pushN.icon != null && pushN.icon.length() > 0) {
                     parSave.addApp.add("\n" + tab8 + "<meta-data");
                     parSave.addApp.add("\n" + tab12 + "android:name=\"com.google.firebase.messaging.default_notification_icon\"");
@@ -959,6 +992,7 @@ public class ExportResult extends BaseServlet {
                         parSave.addApp.add("\n" + tab12 + "android:resource=\"" + findColorByIndex(pushN.color, parSave.colors) + "\" />");
                     }
                 }
+*/
                 declare.add("\n");
                 for (int i = 0; i < ikCan; i++) {
                     Channel item = listC.get(i);
@@ -978,7 +1012,7 @@ public class ExportResult extends BaseServlet {
                             declare.add("\n            notice(\"" + itemN.name + "\")");
                             declare.add("\n                .lotPushs(\"" + itemN.txt + "\", true)");
                             if (itemN.large != null && itemN.large.length() > 0) {
-                                declare.add("\n                .iconLarge(" + dravableFromUrl(item.large) + ")"); 
+                                declare.add("\n                .iconLarge(" + dravableFromUrl(itemN.large) + ")"); 
                             }
                             if (itemN.icon != null && itemN.icon.length() > 0) {
                                 if (itemN.color == null || itemN.color.length() == 0) {
@@ -988,8 +1022,9 @@ public class ExportResult extends BaseServlet {
                                     + findColorResourse(Integer.valueOf(itemN.color), parSave.colors) + "))");
                             }
                         }
-                        declare.add("))\n");
+                        declare.add("));\n");
                     }
+/*
                     if (item.icon != null && item.icon.length() > 0) {
                         declare.add("            .icon(" + dravableFromUrl(item.icon) + ")"); 
                     }
@@ -999,7 +1034,8 @@ public class ExportResult extends BaseServlet {
                     if (item.color != null && item.color.length() > 0) {
                         declare.add("\n            .iconColor(" + findColorResourse(Integer.valueOf(item.color), parSave.colors) + ")"); 
                     }
-                    declare.add(";\n");
+*/
+//                    declare.add(";\n");
                 }
             }
             declare.add("    }\n");
@@ -1710,7 +1746,7 @@ public class ExportResult extends BaseServlet {
             for (MenuItem mi : list) {
                 res += sep + mi.screen.toUpperCase();
                 arrSt += sep + mi.title;
-                sep = ", ";
+                sep = ",";
             }
             res += "})\n";
             res += tab20 + ".setTab(R.id." + comp.view.viewId + ", " + formArrayStringId(arrSt, name + "_" + comp.view.viewId, parSave.arrayString) + ")";
@@ -1756,7 +1792,7 @@ public class ExportResult extends BaseServlet {
     }
     
     private String formArrayStringId(String arr, String name, List<String> arrString) {
-        String[] arrSt = arr.split(", ");
+        String[] arrSt = arr.split(",");
         arrString.add(tab4 + "<string-array name=\"" + name + "\">\n");
         for (String st : arrSt) {
             arrString.add(tab8 + "<item>" + st + "</item>\n");
@@ -1769,6 +1805,17 @@ public class ExportResult extends BaseServlet {
         ItemResurces iRes = new ItemResurces();
         iRes.itemName = name;
         iRes.itemValue = value;
+
+        int ik = listString.size();
+        for (int i = 0; i < ik; i++) {
+            ItemResurces item = listString.get(i);
+            if (name.equals(item.itemName)) {
+                return "R.string." + name;
+            }
+            if (value.equals(item.itemValue)) {
+                return "R.string." + item.itemName;
+            }
+        }
         listString.add(iRes);
         return "R.string." + name;
     }
@@ -2448,7 +2495,9 @@ public class ExportResult extends BaseServlet {
                         vId = p.viewId;
                     }
                     String nn = parSave.currentScreen + "_" + vId + "_txt";
-                    formStringId(nn, p.text, parSave.listString);
+                    String stId = formStringId(nn, p.text, parSave.listString);
+                    int iDot = stId.lastIndexOf(".");
+                    nn = stId.substring(iDot + 1);
                     parSave.countStr ++;
                     writer.write(tab + "android:text=\"@string/" + nn + "\"");
                 }
@@ -2489,7 +2538,12 @@ public class ExportResult extends BaseServlet {
 
             if (p.src != null && p.src.length() > 0) {
                 if (p.formResourse != null && p.formResourse) {
-                    writer.write(tab + "android:src=\"@drawable/" + dravableFromName(p.src) + "\"");
+                    String mipmaparr = dravableFromName(p.src);
+                    if (mipmaparr.equals("_syst_android_arrow_down")) {
+                        writer.write(tab + "android:src=\"@mipmap/" + mipmaparr + "\"");
+                    } else {
+                        writer.write(tab + "android:src=\"@drawable/" + mipmaparr + "\"");
+                    }
                 }
             }
             if (p.scaleType != null) {
@@ -2604,8 +2658,11 @@ public class ExportResult extends BaseServlet {
                             if (namId == null) {
                                 namId = "";
                             }
-                            String nameStrId = parSave.currentScreen + namId + "grammar";
-                            formStringId(nameStrId, p.componParam.grammar, parSave.listString);
+                            String nameStrId = parSave.currentScreen + namId + "_grammar";
+//                            formStringId(nameStrId, p.componParam.grammar, parSave.listString);
+                            String stId = formStringId(nameStrId, p.componParam.grammar, parSave.listString);
+                            int iDot = stId.lastIndexOf(".");
+                            nameStrId = stId.substring(iDot + 1);
                             writer.write(tab + "app:stringArray=\"@string/" + nameStrId + "\"");
                             if (p.componParam.spaceZero != null && p.componParam.spaceZero) {
                                 writer.write(tab + "app:zeroNotView=\"true\"");
@@ -2654,8 +2711,20 @@ public class ExportResult extends BaseServlet {
                             vId = p.viewId;
                         }
                         String nn = parSave.currentScreen + "_" + vId + "_hint";
-                        formStringId(nn, p.componParam.st_1, parSave.listString);
+/*
+//                        formStringId(nn, p.componParam.st_1, parSave.listString);
                         parSave.countStr ++;
+                        
+                        String stId = formStringId(nn, p.componParam.grammar, parSave.listString);
+                        int iDot = stId.lastIndexOf(".");
+                        nn = stId.substring(iDot + 1);
+
+                        
+                        writer.write(tab + "android:hint=\"@string/" + nn + "\"");
+*/
+                        String stId = formStringId(nn, p.componParam.st_1, parSave.listString);
+                        int iDot = stId.lastIndexOf(".");
+                        nn = stId.substring(iDot + 1);
                         writer.write(tab + "android:hint=\"@string/" + nn + "\"");
                     }
                     boolean noInputType = true;
@@ -2701,6 +2770,7 @@ public class ExportResult extends BaseServlet {
                         }
 */
                         if (p.componParam.st_10 != null && p.componParam.st_10.length() > 0) {
+//System.out.println("NNNNNNNN="+p.viewId+"<< ST_10="+p.componParam.st_10+"<<");
                             writer.write(tab + "app:idShowImg=\"@drawable/" + nameFromUrl(p.componParam.st_10) + "\"");
                         }
                         if (p.componParam.st_11 != null && p.componParam.st_11.length() > 0) {
@@ -2823,7 +2893,9 @@ public class ExportResult extends BaseServlet {
                             namId = "";
                         }
                         String nameStrId = parSave.currentScreen + namId + "calendar";
-                        formStringId(nameStrId, p.componParam.nameMonth, parSave.listString);
+                        String stId = formStringId(nameStrId, p.componParam.nameMonth, parSave.listString);
+                        int iDot = stId.lastIndexOf(".");
+                        nameStrId = stId.substring(iDot + 1);
                         writer.write(tab + "app:nameMonth=\"@string/" + nameStrId + "\"");
                     }
                     break;
@@ -3025,6 +3097,86 @@ public class ExportResult extends BaseServlet {
                         }
                     }
                     break;
+                case Constants.CHECKBOX_3:
+                    cp = getItemSwitch(p.int_1, parSave.styleCheck_3);
+                    if (cp != null) {
+                        if (p.st_1 != null && p.st_1.length() > 0) {
+                            writer.write(tab + "android:text=\"" + p.st_1 + "\"");
+                        }
+                        if (cp.color_1 != null && cp.color_1 != 12) {
+                            writer.write(tab + "android:textColor=\"" + findColorByIndex(cp.color_1, parSave.colors) + "\"");
+                        }
+                        String sepStyle = "";
+                        String styleSw = "";
+                        if (cp.int_1 != null && cp.int_1 == 1) {
+                            styleSw = "bold";
+                            sepStyle = "|";
+                        }
+                        if (cp.int_2 != null && cp.int_2 == 1) {
+                            styleSw += sepStyle + "italic";
+                        }
+                        if (styleSw.length() > 0) {
+                            writer.write(tab + "android:textStyle=\"" + styleSw + "\"");
+                        }
+                        if (cp.int_3 != null && cp.int_3 != 14) {
+                            writer.write(tab + "android:textSize=\"" + cp.int_3 + "sp\"");
+                        }
+                        if (cp.bool_1 != null && cp.bool_1) {
+                            writer.write(tab + "android:layoutDirection=\"rtl\"");
+                        }
+                        
+                        
+                        String gravV = "", gravH = "", gravRes = "";
+                        if (cp.st_2 != null) {
+                            switch (cp.st_2) {
+                                case "center":
+                                    gravV = "center_vertical";
+                                    break;
+                                case "bottom":
+                                    gravV = "bottom";
+                                    break;
+                            }
+                        }
+                        if (cp.st_3 != null) {
+                            switch (cp.st_3) {
+                                case "center":
+                                    gravH = "center_horizontal";
+                                    break;
+                                case "right":
+                                    gravH = "right";
+                                    break;
+                            }
+                        }
+                        String sepGr = "";
+                        if (gravV.length() > 0 && gravH.length() > 0) {
+                            sepGr = "|";
+                        }
+                        gravRes = gravV + sepGr + gravH;
+                        
+                        if (gravRes.length() > 0) {
+                            writer.write(tab + "android:gravity=\"" + gravRes + "\"");
+                        }
+                        
+                        if (p.st_3 != null && ! p.st_3.equals("Unknow")) {
+                            writer.write(tab + "app:statusCheck=\"" + p.st_3 + "\"");
+                        }
+                        if (p.bool_1 != null && ! p.bool_1) {
+                            writer.write(tab + "android:enabled=\"false\"");
+                        }
+                        if (cp.color_2 != null && cp.color_2 != 0) {
+                            writer.write(tab + "app:colorUnchecked=\"" + findColorByIndex(cp.color_2, parSave.colors) + "\"");
+                        }
+                        if (cp.color_3 != null && cp.color_3 != 0) {
+                            writer.write(tab + "app:colorChecked=\"" + findColorByIndex(cp.color_3, parSave.colors) + "\"");
+                        }
+                        if (cp.color_4 != null && cp.color_4 != 0) {
+                            writer.write(tab + "app:colorUnknow=\"" + findColorByIndex(cp.color_4, parSave.colors) + "\"");
+                        }
+                        if (cp.color_5 != null && cp.color_5 != 19) {
+                            writer.write(tab + "app:colorFlag=\"" + findColorByIndex(cp.color_5, parSave.colors) + "\"");
+                        }
+                    }
+                    break;
                 case Constants.ELLIPSIS:
                     if (p.componParam != null) {
                         if (p.componParam.orient != null && p.componParam.orient.equals("vertical")) {
@@ -3094,6 +3246,9 @@ public class ExportResult extends BaseServlet {
                     }
                     if (cs.location != null && ( ! cs.location.equals("top"))) {
                         writer.write(tab + "app:imageLocale=\"" + cs.location + "\"");
+                    }
+                    if (p.colorSet != null && p.colorSet.badgeColor != null && p.colorSet.badgeColor != 3) {
+                        writer.write(tab + "app:badgeColor=\"" + findColorByIndex(p.colorSet.badgeColor, parSave.colors) + "\"");
                     }
                     if (cs.background != null && cs.background.length() > 0) {
                         writer.write(tab + "app:selectBackground=\"@drawable/shape_" + cs.background + "\"");

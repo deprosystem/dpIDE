@@ -132,7 +132,9 @@ function createHeaderSpinner(data, listView) {
     p.width = 24;
     p.height = 24;
     p.gravLayout.h = 2;
-    p.src = "img/android_arrow_down.png";
+    p.formResourse = true;
+    p.src = "mipmap/res/mipmap-xhdpi/_syst_android_arrow_down.png";
+//    p.src = "img/android_arrow_down.png";
     currentElement.android.viewElement = currentElement;
 }
 

@@ -24,7 +24,7 @@ public class Constants {
     public static final String TOOL = "ToolBar", PANEL = "Panel", SCROLLPANEL = "ScrollView", SCROLLFORM = "ScrollForm", FORM = "Form", ELLIPSIS = "Ellipsis",
             LIST = "List", PAGER = "Pager", TAB = "TabLayout", DRAWER = "Drawer", SCROLL = "ScrollPanel", SCROLL_F = "ScrollForm", CARD_VIEW = "CardView",
             MENU_B = "MenuBottom", MENU = "Menu", GALLERY = "Gallery", INDICATOR = "Indicator", IMAGEVIEW = "ImageView", TOOL_MENU = "ToolMenu",
-            PLUS_MINUS = "PlusMinus", RATINGS = "Ratings", SWITCH = "Switch", CHECKBOX = "CheckBox", TOTAL = "Total", PHOTO = "Photo",
+            PLUS_MINUS = "PlusMinus", RATINGS = "Ratings", SWITCH = "Switch", CHECKBOX = "CheckBox", CHECKBOX_3 = "CheckBox_3", TOTAL = "Total", PHOTO = "Photo",
             MAP = "Map", SHEET = "SheetBottom", TEXTVIEW = "TextView", EDITTEXT = "EditText", CALENDAR = "Calendar", SEEKBAR = "SeekBar", 
             TAGS = "Tags", SPINNER = "Spinner", SEQUENCE = "ScreenSequence", INTRO = "Intro", EDIT_GALLERY = "EditGallery", SWIPE_LAYOUT = "SwipeLayout", 
             SWIPE = "Swipe", SUBSCRIBE_FIREBASE = "SubscribeFirebase", SUBSCRIBE_SERVER = "SubscribeServer";
@@ -76,6 +76,7 @@ public class Constants {
         "com.dpcsa.compon.custom_components.ComponSpinner",            // 24
         "androidx.viewpager.widget.ViewPager",                      // 25    INTRO
         "com.dpcsa.compon.custom_components.SwipeLayout",            // 26 
+        "com.dpcsa.compon.custom_components.CheckBoxTriStates",            // 27  
     };
     
     public static String textMail = "<!DOCTYPE html><html><head><title>TODO supply a title</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" 

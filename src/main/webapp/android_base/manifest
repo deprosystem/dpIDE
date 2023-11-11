@@ -20,5 +20,6 @@
         </activity>
 #add_app#
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 #add_permish#
 </manifest>

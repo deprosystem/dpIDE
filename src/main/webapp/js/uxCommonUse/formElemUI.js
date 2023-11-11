@@ -1,6 +1,7 @@
 function formElement(item, toRightOf, namePrev, topM, leftM) {
     let txtView;
     let p = {};
+    let resForm = true;
     switch (item.type) {    // Text,Img,Int,Float,Time
         case "Timestamp":
         case "Date":
@@ -17,6 +18,7 @@ function formElement(item, toRightOf, namePrev, topM, leftM) {
             p.src = "img/picture.png";
             break;
         case "Int":
+        case "Long":
             txtView = formTxt(item);
             p = txtView.android;
             if (item.format != null && item.format.length > 0) {
@@ -82,6 +84,9 @@ function formElement(item, toRightOf, namePrev, topM, leftM) {
                 p = txtView.android;
             }
             break;
+        default:
+            resForm = false;
+            break;
     }
     currentElement.android.viewElement = currentElement;
     if (namePrev != "") {
@@ -98,6 +103,7 @@ function formElement(item, toRightOf, namePrev, topM, leftM) {
     if (toRightOf != "") {
         p.toRightOf = toRightOf;
     }
+    return resForm;
 }
 
 function formDivider() {
@@ -304,17 +310,6 @@ function formSpinner_UX_UI(item) {
     currentComponentView = copyCurrentComponentView;
     currentComponentDescr = copyCurrentComponentDescr;
     return formSpinnerUI(item);
-    
-/*
-    let typeEl = createDivText();
-    typeEl.innerHTML = item.name;
-    el.append(typeEl);
-    
-    let px24 = 24 * DENSITY + "px";
-    let img = newDOMelement('<img src="img/android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
-    el.append(img);
-    return currentElement;
-*/
 }
 
 function formSpinnerUI(item) {
@@ -330,11 +325,6 @@ function formSpinnerUI(item) {
     addNewElement(ACTIVE, currentElement);
     addNavigatorEl(currentElement);
     ACTIVE.android.children.push(currentElement.android);
-/*    
-    let px24 = 24 * DENSITY + "px";
-    let img = newDOMelement('<img src="img/android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
-    currentElement.append(img);
-*/
     return currentElement;
 }
 
@@ -351,7 +341,7 @@ function formSpinner(item) {
     ACTIVE.android.children.push(currentElement.android);
     
     let px24 = 24 * DENSITY + "px";
-    let img = newDOMelement('<img src="img/android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
+    let img = newDOMelement('<img src="mipmap/res/mipmap-xhdpi/_syst_android_arrow_down.png" style="width:' + px24 + ';height:' + px24 + ';position:absolute;right:0">');
     currentElement.append(img);
     return currentElement;
 }

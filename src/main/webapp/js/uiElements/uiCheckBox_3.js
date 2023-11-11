@@ -1,4 +1,4 @@
-function uiCheckBox() {
+function uiCheckBox_3() {
     let metaCheckBox = [
         {title:"Text",len:150,type:"Label"},
         {name: "color_1", title:"Color",type:"Color"},
@@ -8,8 +8,10 @@ function uiCheckBox() {
         {name: "int_3", title:"Size",type:"SelBlock",min:6,max:52,step:1,value:"8,10,12,14,18,20,22,24,28,32"},
         {type:"Line"},
         {title:"Colors",len:150,type:"Label",fontS:10},
-        {name: "color_2", title:"Off",type:"Color",br:true},
+        {name: "color_4", title:"Unknow",type:"Color",br:true},
+        {name: "color_2", title:"Off",type:"Color"},
         {name: "color_3", title:"On",type:"Color"},
+        {name: "color_5", title:"Flag",type:"Color"},
         {type:"Line"},
         {title:"Gravity",len:150,type:"Label",fontS:10},
         {name: "st_2", title:"Vertical",type:"Select",value:"top,center,bottom",br:true},
@@ -19,12 +21,12 @@ function uiCheckBox() {
     let meta = [
         {name: "st_1", title:"Text",rows:2,type:"Textarea",br:true},
         {name: "int_1", title:"Style switch",type:"Choose",what:"switch",meta:metaCheckBox,br:true},
-        {name: "st_3", title:"Checked",type:"Select",value:"Off,On"},
+        {name: "st_3", title:"Checked",type:"Select",value:"Unknow,Off,On"},
         {name: "bool_1", title:"Enabled",type:"Check"}
     ];
     
     let wCheck = +(24 * MEASURE).toFixed(1);
-    let wCheck_2 = wCheck * 2 + 5;
+    let wCheck_3 = wCheck * 3 + 10;
     
     this.data;
             
@@ -70,11 +72,11 @@ function uiCheckBox() {
             el.style.width = (wCheck + 6 + wT) + "px";
             el.style.right = "";
         }
-    }
+    };
     
     this.createDivElement = function(p) {
         if (p.componParam == null) {
-            p.componParam = {type:22,int_1:ListStyleCheck[activeStyleCheckPos].id,color_2:3,color_3:0};
+            p.componParam = {type:27,int_1:ListStyleCheck_3[activeStyleCheckPos_3].id,color_2:3,color_3:0};
             
         }
         let pc = this.getParamCheck(p.componParam.int_1);
@@ -86,7 +88,7 @@ function uiCheckBox() {
             p.bool_1 = true;
         }
         if (p.int_1 == null) {
-            p.int_1 = ListStyleCheck[activeStyleCheckPos].id;
+            p.int_1 = ListStyleCheck_3[activeStyleCheckPos_3].id;
         }
         let grav = pc.st_2;
         if (grav == "top") {
@@ -153,11 +155,11 @@ function uiCheckBox() {
     
     
    this.clickChoose = function(el, met) {
-       new WindListView(this, met, 250, 500, 40, -400, "CheckBox styles");
+       new WindListView(this, met, 250, 500, 40, -400, "CheckBox_3 styles");
     };
     
     this.viewOneContent = function(res, item) {
-        isStylesCheckChange = true;
+        isStylesCheckChange_3 = true;
         let pc = item.param;
         
         let grav = pc.st_2;
@@ -177,13 +179,13 @@ function uiCheckBox() {
         let container = newDOMelement('<div class="_check" style="position: absolute;left:3px;top:0;right:3px;bottom:0"></div>');
         let containerTxt, containerCheck;
         if (pc.bool_1 != null && pc.bool_1) {
-            containerTxt = newDOMelement('<div style="position: absolute;left:0;top:0;right:' + (wCheck_2 + 6) + 'px;height:100%;display:flex;align-items:' + grav 
+            containerTxt = newDOMelement('<div style="position: absolute;left:0;top:0;right:' + (wCheck_3 + 3) + 'px;height:100%;display:flex;align-items:' + grav 
                     + ';justify-content:' + grav_h + '"></div>');
-            containerCheck = newDOMelement('<div style="position: absolute;right:3px;top:0;width:' + wCheck_2 + 'px;height:100%;display:flex;align-items:' + grav + '"></div>');
+            containerCheck = newDOMelement('<div style="position: absolute;right:0;top:0;width:' + wCheck_3 + 'px;height:100%;display:flex;align-items:' + grav + '"></div>');
         } else {
-            containerTxt = newDOMelement('<div style="position: absolute;right:0;top:0;left:' + (wCheck_2 + 6) + 'px;height:100%;display:flex;align-items:' + grav 
+            containerTxt = newDOMelement('<div style="position: absolute;right:0;top:0;left:' + (wCheck_3 + 3) + 'px;height:100%;display:flex;align-items:' + grav 
                     + ';justify-content:' + grav_h + '"></div>');
-            containerCheck = newDOMelement('<div style="position: absolute;left:3px;top:0;width:' + wCheck_2 + 'px;height:100%;display:flex;align-items:' + grav + '"></div>');
+            containerCheck = newDOMelement('<div style="position: absolute;left:0;top:0;width:' + wCheck_3 + 'px;height:100%;display:flex;align-items:' + grav + '"></div>');
         }
 
         container.appendChild(containerTxt);
@@ -205,83 +207,82 @@ function uiCheckBox() {
 
         let w4 = wCheck - 4;
         
-        let checkOff = newDOMelement('<div style="width:' + w4 + 'px;height:' + w4 + 'px;float:left;border-radius:2px;border:2px solid ' + findColorByIndex(pc.color_2) + '"></div>');
+        let checkOff = newDOMelement('<div style="width:' + w4 + 'px;height:' + w4 + 'px;float:left;border-radius:2px;margin-left:5px;border:2px solid ' + findColorByIndex(pc.color_2) + '"></div>');
         let checkOn = newDOMelement('<div style="width:' + wCheck + 'px;height:' + wCheck + 'px;float:left;border-radius:2px;margin-left:5px;background-color:' + findColorByIndex(pc.color_3) + '"></div>');
-        checkOn.append(newDOMelement('<IMG SRC="img/check_icon.png" style="width:12px;height:12px;margin-top:1px;margin-left:1px">'));
-        
+        checkOn.append(newDOMelement('<div style="margin-top:-3px;margin-left:2px;font-size:14px;color:' + findColorByIndex(pc.color_5) + '">\u2714<\div>'));
+//        checkOn.append(newDOMelement('<IMG SRC="img/check_icon.png" style="width:12px;height:12px;margin-top:1px;margin-left:1px">'));
+        let checkUn = newDOMelement('<div style="position:relative;width:' + wCheck + 'px;height:' + wCheck + 'px;float:left;border-radius:2px;background-color:' + findColorByIndex(pc.color_4) + '"></div>');
+        checkUn.append(newDOMelement('<div style="height: 3px;position: absolute;left:3px;right:3px;top:' + (wCheck / 2 - 2) + 'px;background-color:' + findColorByIndex(pc.color_5) + '"></div>'));
+        containerCheck.append(checkUn);
         containerCheck.append(checkOff);
         containerCheck.append(checkOn);
 
         res.append(container);
-    }
+    };
     
     this.chooseEditForm = function() {
-        return formWind(370, 500, 100, -20, "CheckBox styles options", null, null, null, null, "");
-    }
+        return formWind(370, 500, 100, -20, "CheckBox_3 styles options", null, null, null, null, "");
+    };
 
     this.getList = function() {
-        return ListStyleCheck;
-    }
+        return ListStyleCheck_3;
+    };
 
     this.createOneItem = function(i) {
-        let item = ListStyleCheck[i];
+        let item = ListStyleCheck_3[i];
         let res = newDOMelement('<div style="width:100%;height:40px;border-bottom:1px solid #1dace9;position:relative;"></div>');
         this.viewOneContent(res, item);
         return res;
-    }
+    };
     
     this.addItem = function(ch) {
-        let item = JSON.parse(JSON.stringify(ListStyleCheck[activeStyleCheckPos]));
-        item.id = ListStyleCheck.length;
-        ListStyleCheck.push(item);
-        isStylesCheckChange = true;
-        ch[activeStyleCheckPos].style.backgroundColor = "";
-        activeStyleCheckPos = ListStyleCheck.length - 1;
-        let itemV = this.createOneItem(activeStyleCheckPos);
+        let item = JSON.parse(JSON.stringify(ListStyleCheck_3[activeStyleCheckPos_3]));
+        item.id = ListStyleCheck_3.length;
+        ListStyleCheck_3.push(item);
+        isStylesCheckChange_3 = true;
+        ch[activeStyleCheckPos_3].style.backgroundColor = "";
+        activeStyleCheckPos_3 = ListStyleCheck_3.length - 1;
+        let itemV = this.createOneItem(activeStyleCheckPos_3);
         itemV.style.backgroundColor = "#f6faff";
         return itemV;
-    }
+    };
     
     this.getSelectItemPos = function() {
-        return activeStyleCheckPos;
-    }
+        return activeStyleCheckPos_3;
+    };
     
     this.setSelectItemPos = function(pos) {
-        activeStyleCheckPos = pos;
-    }
+        activeStyleCheckPos_3 = pos;
+    };
     
     this.getNewItem = function() {
-        let item = JSON.parse(JSON.stringify(ListStyleCheck[activeStyleCheckPos]));
-        item.id = ListStyleCheck.length;
-        isStylesCheckChange = true;
+        let item = JSON.parse(JSON.stringify(ListStyleCheck_3[activeStyleCheckPos_3]));
+        item.id = ListStyleCheck_3.length;
+        isStylesCheckChange_3 = true;
         return item;
-    }
+    };
     
     this.clickItem = function(ch, pos) {
-        ch[activeStyleCheckPos].style.backgroundColor = "";
-        activeStyleCheckPos = pos;
-        ch[activeStyleCheckPos].style.backgroundColor = "#f6faff";
-    }
+        ch[activeStyleCheckPos_3].style.backgroundColor = "";
+        activeStyleCheckPos_3 = pos;
+        ch[activeStyleCheckPos_3].style.backgroundColor = "#f6faff";
+    };
     
     this.setChooseResult = function(fieldName) {
-        let item = ListStyleCheck[activeStyleCheckPos]
+        let item = ListStyleCheck_3[activeStyleCheckPos_3];
         this.data[fieldName] = item.id;
         this.data.componParam.int_1 = item.id;
         viewCompon();
-    }
-    
-    
-    
-    
+    };
+
     this.getParamCheck = function(id) {
-        let ik = ListStyleCheck.length;
+        let ik = ListStyleCheck_3.length;
         for (let i = 0; i < ik; i++) {
-            let item = ListStyleCheck[i];
+            let item = ListStyleCheck_3[i];
             if (item.id == id) {
                 return item.param;
             }
         }
         return null;
-    }
+    };
 }
-

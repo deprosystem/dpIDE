@@ -4,8 +4,8 @@ function PushNotifications() {
         {name:"isJson",len:20,type:"ImgLabel",src:"img/check_green.png"},
         {name:"confserv",title:"For server",type:"FileToStr",len:70},
         {name:"isJsonServ",len:20,type:"ImgLabel",src:"img/check_green.png"},
-        {name:"icon",title:"Icon",type:"Img",len:30},
-        {name:"color",title:"Color",type:"Color",len:40},
+//        {name:"icon",title:"Icon",type:"Img",len:30},
+//        {name:"color",title:"Color",type:"Color",len:40},
         {name:"add", title:"Add channel",type:"ClickLab",img:"img/add_blue.png",float:"right",margR:7,tLocation:"right",color:"#1DACE9",wh:12},
     ];
     let meta = [
@@ -22,9 +22,15 @@ function PushNotifications() {
         {name:"color",title:"Color",type:"Color",len:40}
     ];
     let metaServ = [
+//        {name:"type",title:"Type",len:120,type:"Select",value:"New data,Data change,Event occurrence,Queue change,Push message"},
         {name:"type",title:"Type",len:120,type:"Select",value:"New data,Data change,Event occurrence,Queue change"},
         {name:"table",title:"Table",len:120,type:"Tables"}
     ];
+/*
+    let metaServMes = [
+        {name:"type",title:"Type",len:120,type:"Select",value:"New data,Data change,Event occurrence,Queue change,Push message"}
+    ];
+ */
     let metaServOther = [
         {name:"title",title:"Title push",len:120,type:"Text"},
         {name:"message",title:"Message push",len:120,type:"Text"},
@@ -77,7 +83,7 @@ function PushNotifications() {
                 this.edit_1();
                 break;
             case 1:
-console.log("RES="+res+"<<");
+//console.log("RES="+res+"<<");
                 closeDataWindow(this.wind);
                 break;
         }
@@ -169,6 +175,21 @@ console.log("RES="+res+"<<");
             case "notices":
                 switch (name) {
                     case "type":
+/*
+                        switch(datServ.type) {
+                            case "Push message":
+                                this.descrServ.innerHTML = "";
+                                datServ.table = "";
+                                this.contServ.innerHTML = "";
+                                new EditForm(metaServMes, datServ, this.contServ, null, this, true, null, null, 7, "notices");
+                                break;
+                            default:
+                                this.contServ.innerHTML = "";
+                                new EditForm(metaServ, datServ, this.contServ, null, this, true, null, null, 7, "notices");
+                                this.setDescrServ(datServ);
+                                break;
+                        }
+ */
                         break;
                     case "table":
                         let datNot = this.pushData.notif[this.numChanal]["notices"];

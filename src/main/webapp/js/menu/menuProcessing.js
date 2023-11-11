@@ -1,11 +1,12 @@
 var TYPE_String = 0, TYPE_StringAr = 1, TYPE_Image = 2, TYPE_Int = 3;
-var validEmpty = 1, validNumber = 2, validName = 3; validNameEmpty = 4 // validName - a-z,_,0-9   перша - літера
+var validEmpty = 1, validNumber = 2, validName = 3; validNameEmpty = 4; // validName - a-z,_,0-9   перша - літера
 var listEdit;
 var listDimens;
 var ListStyleSpec;
 var activeStyleSpecPos = -1;
-var ListStyleCheck;
+var ListStyleCheck, ListStyleCheck_3;
 var activeStyleCheckPos = -1;
+var activeStyleCheckPos_3 = -1;
 var listSaveElements;
 var currentProject;
 var currentScreen;
@@ -21,6 +22,7 @@ var isStringsChange = false;
 var isStylesChange = false;
 var isStylesSpecChange = false;
 var isStylesCheckChange = false;
+var isStylesCheckChange_3 = false;
 var isDrawableChange = false;
 var isDimensChange = false;
 var isPushChange = false;
@@ -61,6 +63,10 @@ function formJsonProject() {
     }
     if (isStylesCheckChange) {
         par.style_check = JSON.stringify(ListStyleCheck);
+    }
+console.log("isStylesCheckChange_3="+isStylesCheckChange_3);
+    if (isStylesCheckChange_3) {
+        par.style_check_3 = JSON.stringify(ListStyleCheck_3);
     }
     if (isDrawableChange) {
         par.drawable = JSON.stringify(listDrawable);
@@ -104,6 +110,13 @@ function pushServerParam() {
     new PushServer();
 }
 */
+
+function setPalette() {
+    let wind = formWind(1000, 670, 40, 150, "Palette", null, null, null, null, "");
+    setHelp(wind, "https://docs.google.com/document/d/1iYRvK_JAz67laVPot_pCEUa0sM9Jp3hSJZMMG4qmtxQ/edit#bookmark=id.3k6rln33o75q");
+    let cc = new ColorCircle(wind);
+}
+
 function multilingualV() {
     if (multiLingualView == null) {
         multiLingualView = new MultiLingual();
@@ -212,6 +225,13 @@ function cbCreateProjectDop() {
         isStylesCheckChange = true;
     }
     activeStyleCheckPos = ListStyleCheck.length - 1;
+    if (currentProject.style_check_3 != null && currentProject.style_check_3.length > 0) {
+        ListStyleCheck_3 = JSON.parse(currentProject.style_check_3);
+    } else {
+        ListStyleCheck_3 = [{id:0,type:"check",param:{color_1:12,color_2:0,color_3:0,color_4:0,color_5:19,int_1:0,int_2:0,int_3:14,st_2:"top"}}];
+        isStylesCheckChange_3 = true;
+    }
+    activeStyleCheckPos_3 = ListStyleCheck_3.length - 1;
     listValueAppParam = JSON.parse(currentProject.appParam);
     if (currentProject.style != null) {
         listStyle = JSON.parse(currentProject.style);
@@ -372,7 +392,7 @@ function openMenu() {
     listMenu_UX[0].children[5].domElement.className = 'subMainMenu';
     listMenu_UX[1].children[0].domElement.className = 'subMainMenu';
     listMenu_UX[1].children[1].domElement.className = 'subMainMenu';
-//    listMenu_UX[1].children[2].domElement.className = 'subMainMenu';
+    listMenu_UX[1].children[2].domElement.className = 'subMainMenu';
     listMenu_UX[2].children[0].domElement.className = 'subMainMenu';
     listMenu_UX[2].children[1].domElement.className = 'subMainMenu';
     listMenu_UX[3].children[0].domElement.className = 'subMainMenu';
@@ -786,7 +806,6 @@ function validDeclare() {
         }
     }
     if (strError != "") {
-console.log("strError strError");
         var wind = formWind(500, 400, 35, 270, "Error in project");
         wind.style.paddingLeft = "4px";
         wind.innerHTML = strError;

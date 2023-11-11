@@ -20,9 +20,9 @@ public class ProjectDB extends BaseDB {
     public long createProjectId(ProjectM pc) {
         long res = -1;
         try (Connection connection = getDBConnection(); Statement statement = connection.createStatement()) {
-            String str = "INSERT INTO projects (user_id, project_name, package, project_comment, app_name, resurse_ind, strings, app_param, color, style, style_spec, style_check, drawable, dimens, screens, push, languages, date_create) VALUES ("
+            String str = "INSERT INTO projects (user_id, project_name, package, project_comment, app_name, resurse_ind, strings, app_param, color, style, style_spec, style_check, style_check_3, drawable, dimens, screens, push, languages, date_create) VALUES ("
                     + pc.userId + ",'" + pc.nameProject + "','" + pc.namePackage + "','" + pc.comment + "','" + pc.nameAPP + "','" + pc.resurseInd + "','" + pc.strings + "','" + pc.appParam + "','" + pc.colors + "','" 
-                    + pc.style + "','" + pc.style_spec + "','" + pc.style_check + "','" + pc.drawable + "','" + pc.dimens + "','" + pc.screens 
+                    + pc.style + "','" + pc.style_spec + "','" + pc.style_check + "','" + pc.style_check_3 + "','" + pc.drawable + "','" + pc.dimens + "','" + pc.screens 
                     + "','" + pc.push + "','" + pc.languages + "'," + pc.dateCreate + ");";
             int updateCount = statement.executeUpdate(str, Statement.RETURN_GENERATED_KEYS);
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -65,6 +65,10 @@ public class ProjectDB extends BaseDB {
         }
         if (pc.style_check != null) {
             strUpd += sep + "style_check = " + " '" + pc.style_check + "' ";
+            sep = ",";
+        }
+        if (pc.style_check_3 != null) {
+            strUpd += sep + "style_check_3 = " + " '" + pc.style_check_3 + "' ";
             sep = ",";
         }
         if (pc.screens != null) {
@@ -177,6 +181,7 @@ public class ProjectDB extends BaseDB {
                 pm.style = res.getString("style");
                 pm.style_spec = res.getString("style_spec");
                 pm.style_check = res.getString("style_check");
+                pm.style_check_3 = res.getString("style_check_3");
                 pm.screens = res.getString("screens");
                 pm.push = res.getString("push");
                 pm.languages = res.getString("languages");

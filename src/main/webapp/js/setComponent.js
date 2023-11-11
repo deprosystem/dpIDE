@@ -26,6 +26,7 @@ function formCompon() {
             {name: 'Spinner', typeBlock: 0},
             {name: 'Switch', typeBlock: 0},
             {name: 'CheckBox', typeBlock: 0},
+            {name: 'CheckBox_3', typeBlock: 0},
             {name: 'PlusMinus', typeBlock: 0},
             {name: 'Calendar', typeBlock: 0},
 //            {name: 'EditGallery', typeBlock: 0},
@@ -204,7 +205,7 @@ function createDivClick(num) {
 }
 
 function createDivClick2(i, j) {
-    var container = document.createElement('div')
+    var container = document.createElement('div');
     container.innerHTML = '<div onclick="clickCategory2('+i+','+j+')"> </div>';
     return container.firstChild
 }

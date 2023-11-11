@@ -24,7 +24,7 @@ public class ParamSave {
     public ListScreen sreens;
     public ListItemResurces colors, drawable, strings, appParam;
     public List<ItemStyle> styles;
-    public ListSwitchParam switchSpec, styleCheck;
+    public ListSwitchParam switchSpec, styleCheck, styleCheck_3;
     public HashSet<String> importD, plaginGradle, addImplement, addClassPath;
     public Lang lang;
     public List<ItemResurces> getListString() {

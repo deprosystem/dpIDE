@@ -50,7 +50,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
         let controll = createFooter(50);
         addFooter(this.wind, controll);
         let buttonSave = createButtonBlue('Save', 70);
-        buttonSave.addEventListener("click", () => {closeDataWindow(this.wind, this.dbSaveQu())}, false);
+        buttonSave.addEventListener("click", () => {closeDataWindow(this.wind, this.dbSaveQu());}, false);
         controll.appendChild(buttonSave);
         let buttonCancel = createButtonWeite('Cancel', 70);
         buttonCancel.addEventListener("click", () => {closeWindow(this.wind);}, true);
@@ -105,7 +105,11 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
         let ik;
         let query = JSON.parse(res);
         let originQuery = JSON.parse(query.origin_query);
+//console.log("query.origin_query="+query.origin_query);
         this.listAlias = originQuery.listAlias;
+        if (this.listAlias == null) {
+            this.listAlias = [];
+        }
         let wind_1 = this.queryTables.closest(".wind");
         let inpName = wind_1.querySelector(".inpName");
         let inpDescr = wind_1.querySelector(".inpDescr");
@@ -265,13 +269,13 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
             el.innerHTML = "";
             this.setNameFieldView(el);
         }
-    }
+    };
     
     this.delExpresion = function(el) {
         el.remove();
         let ss = this.queryFieldsDataQu.closest(".viewport");
         ss.scroll_y.resize();
-    }
+    };
     
     this.getTabInQu = function (id) {
         let ik = listTables.length;
@@ -282,7 +286,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
             }
         }
         return -1;
-    }
+    };
     
     this.dbSaveQu = function() {
         let wind_1 = this.queryTables.closest(".wind");
@@ -525,6 +529,8 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
                                 parVal = val;
                             }
                             paramValue = parVal;
+                            let arrPar = parVal.split("=");
+                            parVal = arrPar[0];
                             paramValueQu = "%" + parVal + "%";
                             strParam += sepStrPar + parVal;
                             sepStrPar = ",";
@@ -589,7 +595,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
         hostDomain = currentProject.host;
         doServerAlien("POST", hostDomain + "query/create", this, JSON.stringify(dat), 
         {source:2,id:this.idQu,name:nameQu,descr:descrQu,type_query:"SELECT",param_query:strParam,fields_result:JSON.stringify(data)}, document.body);
-    }
+    };
     
     this.cbDoServer = function (res, par) {
         switch (par.source) {
@@ -604,7 +610,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
                 }
                 break;
         }
-    }
+    };
     
     this.setOrderForQu = function() {
         let wFields = 180;

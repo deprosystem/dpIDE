@@ -70,6 +70,7 @@ public class Project extends BaseServlet {
                         pc.style = formStyle();
                         pc.style_spec = formStyleSpec();
                         pc.style_check = formStyleCheck();
+                        pc.style_check_3 = formStyleCheck_3();
                         pc.drawable = formDrawable();
                         pc.appParam = formAppParam();
                         pc.screens = formScreens();
@@ -99,6 +100,7 @@ public class Project extends BaseServlet {
                         sendError(response, "Input Error " + e.toString());
                     }
                     if (pc != null) {
+System.out.println("pc.style_check_3="+pc.style_check_3+"<<");
                         String er = projectDb.updateProject(pc);
                         if (er.length() == 0) {
                             sendResultOk(response);
@@ -199,6 +201,7 @@ public class Project extends BaseServlet {
                         pc.style = template.style;
                         pc.style_spec = template.style_spec;
                         pc.style_check = template.style_check;
+                        pc.style_check_3 = template.style_check_3;
                         pc.drawable = template.drawable;
                         pc.appParam = template.appParam;
                         pc.resurseInd = lowerCaseRandom(15);
@@ -335,6 +338,16 @@ public class Project extends BaseServlet {
         is.id = 0;
         is.type = "check";
         is.param = new SwitchParam(0,0,14,30,24, "", "top", "Off", 12,0,3,6,3,0,7,false);
+        lsp.add(is);
+        return gson.toJson(lsp);
+    }
+    
+    private String formStyleCheck_3() {
+        ListSwitchParam lsp = new ListSwitchParam();
+        ItemSwitch is = new ItemSwitch();
+        is.id = 0;
+        is.type = "check";
+        is.param = new SwitchParam(0,0,14,30,24, "", "top", "Off", 12,0,0,0,19,0,7,false);
         lsp.add(is);
         return gson.toJson(lsp);
     }
