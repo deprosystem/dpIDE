@@ -145,6 +145,7 @@ function clickElement(event, el) {
     hideContourEl();
     currentElement = el;
     setParamCompon();
+console.log("clickElement setPickElement");
     setPickElement(el);
     selectNavigatorEl(el);
     if (el.android != null) {
@@ -165,6 +166,7 @@ function clickElement(event, el) {
 }
 
 function setPickElement(el) {
+console.log("setPickElement");
     appendContour();
 }
 

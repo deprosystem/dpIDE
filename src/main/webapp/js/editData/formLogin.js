@@ -71,7 +71,7 @@ this.tttDDDlll;
         this.currentData = dataReg;
         this.currentView = regView;
         viewError.innerHTML = "";
-    }
+    };
     
     this.clickLog = function() {
         reg.style.backgroundColor = "";
@@ -82,7 +82,7 @@ this.tttDDDlll;
         this.currentData = dataLog;
         this.currentView = logView;
         viewError.innerHTML = "";
-    }
+    };
     
     this.cbEdit = function(name){
         switch (name) {
@@ -94,7 +94,7 @@ this.tttDDDlll;
                 }
                 break;
         }
-    }
+    };
     
     this.send = function() {
         viewError.innerHTML = "";
@@ -118,7 +118,7 @@ this.tttDDDlll;
             }
             doServer("POST", url, this, data, null, document.body);
         }
-    }
+    };
     
     this.cbDoServer = function(res) {
         if (this.currentData == dataReg) {
@@ -134,10 +134,10 @@ this.tttDDDlll;
             this.currentEdit = this.editCode;
         } else {
             loginPanel.innerHTML = "";
-            loginPanel.style.display = "none"
+            loginPanel.style.display = "none";
             initialView(res);
         }
-    }
+    };
 }
 
 

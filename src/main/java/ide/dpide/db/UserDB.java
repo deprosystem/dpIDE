@@ -62,7 +62,7 @@ public class UserDB extends BaseDB{
     
     public void setCodeConfirm(Profile user) {
         long tt = new Date().getTime();
-        String strUpd = "UPDATE users SET code_confirm=0 WHERE login = " + user.login;
+        String strUpd = "UPDATE users SET code_confirm = 0 WHERE login = '" + user.login + "'";
         try (Connection connection = getDBConnection(); Statement statement = connection.createStatement()) {
             statement.executeUpdate(strUpd);
         } catch (SQLException | ClassNotFoundException ex) {

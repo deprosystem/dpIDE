@@ -54,15 +54,6 @@ function FieldsFromSource(model, ind, editC, choiseSource) {
         this.fQueryPort = formViewScrolY(this.fQuery);
         this.fieldsQuery = this.fQueryPort.querySelector(".viewData");
         this.wind = wind;
-
-/*
-model={"method":15,
-    "data":[[{"name":"img","type":"Img","edit":"Field"},{"name":"title","type":"Text","edit":"Field"},
-            {"name":"marka","type":"Text","edit":"Field"},{"name":"model","type":"Text","edit":"Field"},{"name":"year","type":"Text","edit":"Field"},
-            {"name":"mileage","type":"Int","edit":"Field"},{"name":"praice","type":"Int","edit":"Field"},{"name":"gal","type":"Gallery","edit":"Field"},
-            {"name":"id_user","type":"Long","edit":"Profile"}]],
-    "progr":"standard","bool_1":false,"param":"","url":"query/czeux6pkp1l73gb/6"}
-*/
         if (this.model.idQuery == -1) { // Здесь id или Query или table. В зависимости от choiseSource.source
             this.model.idQuery = null;
         }
@@ -83,17 +74,18 @@ model={"method":15,
         if (item.id != null) {
             this.idNewQuery = item.id;
         }
-//console.log("ITEM="+JSON.stringify(item));
         this.paramQuery = item.param;
         this.selFieldAll.src = "img/check-act.png";
         this.fieldsQuery.innerHTML = "";
         this.fieldsView.innerHTML = "";
         setTitleWind(this.wind, "Specify fields for view from the " + this.choiseSource.source + " <span style='color:#009fff;font-size:22px'>" + item.name + "</span>");
+        if (item.fields == null || item.fields.length == 0) {
+            item.fields = "[]";
+        }
         let fildsQu = JSON.parse(item.fields);
         let ik = fildsQu.length;
         for (let i = 0; i < ik; i++) {
             let it = fildsQu[i];
-//console.log("setFieldsSource_1 it.name="+it.name+"<<");
             let cont = newDOMelement('<div class="cont_f" style="float:left;width:100%;position:relative;height:28px;border-bottom:1px solid #aaf;clear:both"></div>');
             let name = newDOMelement('<div style="margin-top:2px;float:left;margin-left:4px;font-size:14px">' + it.name + ' </div>');
             cont.idField = it.id_field;
@@ -194,17 +186,6 @@ model={"method":15,
             selType.style.cssText = "width:80px;font-size:12px;color:#110000;position:absolute;right:3px;";
             cont.append(selType);
         }
-/*
-        if (this.editC) {
-            let imgSrc = "img/check-act.png";
-            if (ed) {
-                imgSrc = "img/check-sel_1.png";
-            }
-            let selField = newDOMelement('<img style="width:14px;cursor:pointer;height:14px;position:absolute;right:3px;top:2px;" src=' + imgSrc + '>');
-            selField.addEventListener("click", function(){checkElement(selField)}, false);
-            cont.append(selField);
-        }
-*/
     };
     
     this.setViewAllImg = function() {
@@ -229,7 +210,7 @@ model={"method":15,
                 this.selFieldAll.src = "img/check-sel-blur.png";
             }
         }
-    }
+    };
     
     this.selAllFieldInQu = function() {
         if (checkElement(this.selFieldAll)) {
@@ -237,7 +218,7 @@ model={"method":15,
         } else {
             this.delAllFields();
         }
-    }
+    };
    
     this.addAllFields = function() {
         let child = this.fieldsQuery.children;

@@ -2,8 +2,8 @@ var MATCH = -1, WRAP = -2;
 var paramCompon;
 var selectGravityL;
 var listImg;
-var fonSel = "#deeaff";
 var fonNo = "#0000";
+var fonSel = "#deeaff";
 var componentMatchingElem = null;
 
 function setParamCompon() {

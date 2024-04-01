@@ -207,7 +207,8 @@ function editDataModel(el, ind) {
     if (ind != null) {
         num = 0;
     } else {
-        num = getNumDataTYpe(p) + 1;
+//        num = getNumDataTYpe(p) + 1;
+        num = getNumDataTYpe(p);
     }
     switch (selectMethodInModel) {
         case "TEST":

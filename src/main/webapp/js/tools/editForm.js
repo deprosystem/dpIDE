@@ -14,7 +14,7 @@ function EditForm(meta, data, domEl, after, cbEdit, marg, margTop, isScreen, mar
     this.contWind;
     this.marg_L;
     this.marg_T;
-    let fonSel = "#deeaff";
+//    let fonSel = "#deeaff";
     
     this.makeEditForm = function() {
         let ik = this.edMeta.length;

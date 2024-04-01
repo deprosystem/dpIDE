@@ -1,6 +1,6 @@
 
 :root {--h_header: 35px; --h_wind_qu: 400px; --w_wind_qu: 450px;
-       --w_left: 300px; --w_right: 250px; --h_backEnd: 0; --r_data: 120px; --r_emulator: 210px;
+       --w_left: 300px; --w_right: 250px; --h_backEnd: 0px; --r_data: 120px; --r_emulator: 210px;
        --left_compon:0px; --w_ux_p: 60%; --w_ux_r: 0px; 
        --c_line: #2c3336;--c_blue:#1dace9;--c_yelow:#ffc700;--c_content:#FfFBEF; --c_screen:#DAF0FA;--c_screen_hover:#d5f0ff;
        --c_compon:#f7f7f7;--c_component:#fff;--c_input:#cbe4ef;--c_separator:#7ac;--c_scroll:#1DACE9;--c_yelow_lite:#FcFcdF;

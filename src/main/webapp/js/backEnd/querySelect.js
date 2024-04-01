@@ -1087,7 +1087,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
         let selField = newDOMelement('<img style="width:14px;cursor:pointer;height:14px;position:absolute;right:2px;top:3px;" src="img/check-act.png">');
         selField.addEventListener("click", () => {this.selFieldInTableQu(selField);}, true);
         cont.appendChild(selField);
-    }
+    };
 
     this.selFieldInTableQu = function(el) {
         if (checkElement(el)) {
@@ -1096,7 +1096,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
             this.delFieldsInQu(el);
         }
         this.setViewAllImgQu(el);
-    }
+    };
     
     this.setViewAllImgQu = function (el) {
         let cont = el.closest(".viewData");
@@ -1124,7 +1124,7 @@ function QuerySelect (wind, listTab, idQu, cbQuery) {
                 sel.src = "img/check-sel-blur.png";
             }
         }
-    }
+    };
     
     this.addFieldsInQu = function (el) {
         let cont = el.closest('.cont_f');

@@ -140,10 +140,10 @@ function editDrawable(fCB, p) {
     let footer = createFooter(50);
     wind.appendChild(footer);
     let buttonOk = createButtonBlue('Ok', 70);
-    buttonOk.addEventListener("click", function(event){drawableOk();closeWindow(wind);}, true);
+    buttonOk.addEventListener("click", function(event){drawableOk();closeDataWindow(wind);}, true);
     footer.appendChild(buttonOk);
     let buttonCancel = createButtonWeite('Cancel', 70);
-    buttonCancel.addEventListener("click", function(event){closeWindow(wind);drawableCanc();}, true);
+    buttonCancel.addEventListener("click", function(event){closeDataWindow(wind);drawableCanc();}, true);
     footer.appendChild(buttonCancel);
     funcCallBack = fCB;
     savedIdBackground = p.background;
@@ -333,8 +333,8 @@ function setDrawable(drawEl, draw) {
 }
 
 function createDrawableEl() {
-    var container = document.createElement('div')
-    container.innerHTML = '<div class="drawableBackground"></div>'
+    var container = document.createElement('div');
+    container.innerHTML = '<div class="drawableBackground"></div>';
     return container.firstChild
 }
 
@@ -397,7 +397,7 @@ function chooseDrawable(fCB, p) {
     let footer = createFooter(50);
     wind.appendChild(footer);
     let buttonCancel = createButtonWeite('Cancel', 70);
-    buttonCancel.addEventListener("click", function(event){closeWindow(wind)}, true);
+    buttonCancel.addEventListener("click", function(event){closeDataWindow(wind)}, true);
     footer.appendChild(buttonCancel);
     var ik = listDrawable.length;
     for (var i = 0; i < ik; i++) {
@@ -414,18 +414,18 @@ function chooseDrawable(fCB, p) {
 function selectedDrawable(el, i) {
     var item = listDrawable[i];
     pppp.background = item.itemId;
-    closeWindow(el);
+    closeDataWindow(el);
     funcCallBack();
 //    viewCompon();
 }
 
 function newItemListDraw(item, i) {
-    var container = document.createElement('div')
+    var container = document.createElement('div');
     container.innerHTML = '<div onclick="selectedDrawable(this,' + i + ')" class="itemDrawView" style="padding-bottom: 5px;clear: both; float: left;width:100%">' 
             + '<div style="float: left;">' + item.itemName 
             + '</div><div class="itemDraw" style="float: left; margin-left: 10px;height: 35px; width: 70px;"></div>'
             +'<img onclick="del_drawable(this,' + i +')" style="float:right;cursor:pointer;" width="18" height="18" src="img/close-o.png">'
-        +'</div>'
+        +'</div>';
     return container.firstChild;
 }
 

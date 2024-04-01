@@ -1,6 +1,8 @@
 function uxList() {
     this.param = {name: "List", viewBaseId: "list", onlyOne: false};
     this.hiddenHandlers = ",Autch,backOk,send,update,";
+    
+
     this.editParam = '<div style="height:1px;background-color:#1dace9;margin-top:5px"></div>\n\
         <div class="comp_view_param" style="height:42px;">\n\
             <div class="span_count" style="float: left;">\n\

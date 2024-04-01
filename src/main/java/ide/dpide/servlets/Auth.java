@@ -10,6 +10,7 @@ import ide.dpide.entity.TokenUser;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.Date;
 
@@ -25,7 +26,6 @@ public class Auth extends BaseServlet {
         UserDB userDB = new UserDB(request);
         switch (ds.query) {
             case "/auth/login":
-                
                 try {
                     data = getStringRequest(request);
                     userC = gson.fromJson(data, Profile.class);

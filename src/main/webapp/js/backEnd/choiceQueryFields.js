@@ -68,7 +68,7 @@ function ChoiceQueryFields() {
     
     this.oneQueryView = function(i, el) {
         let item = listQuerys[i];
-console.log("oneQueryView item="+JSON.stringify(item));
+//console.log("oneQueryView item="+JSON.stringify(item));
         let descr = item.title_query;
         if (descr == null) {
             descr = "";
@@ -85,7 +85,7 @@ console.log("oneQueryView item="+JSON.stringify(item));
     this.selectQuery = function(i, el) {
         closeDataWindow(el);
         let item = listQuerys[i];
-console.log("selectQuery item="+JSON.stringify(item));
+//console.log("selectQuery item="+JSON.stringify(item));
         this.cb.setFieldsSource_1({id:item.id_query,name:item.name_query,fields:item.fields_result,param:item.param_query});
     };
 }
