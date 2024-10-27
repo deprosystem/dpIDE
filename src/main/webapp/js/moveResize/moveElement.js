@@ -143,23 +143,13 @@ function mouseUpEl(e) {
 }
 
 function clickEl() {
-console.log("clickEl currentElement="+currentElement.android.viewId);
     if (currentElement.getElementsByClassName('contourEl')[0] != null) {
-//console.log("clickEl hideScroll currentElement="+currentElement);
         hideContourEl();
-/*
-        if (currentElement != null) {
-            hideScroll(currentElement);
-        }
-*/
     } else {
-//console.log("clickEl showScroll");
         let targ = event.target;
         if (targ != null) {
             currentElement = targ;
-//            showScroll(currentElement);
         }
-console.log("clickEl setPickElement");
         setPickElement();
     }
 }
@@ -235,50 +225,24 @@ function resizeContour(e) {
         return;
     }
     var classN = e.target.className;
-console.log("  resizeContour 111 classN="+classN);
     let el = e.currentTarget;
     if (el.android != null) {
         if (elClick == null) {
             elClick = el;
         }
     }
-if (ACTIVE != null && ACTIVE.android != null) {
-    console.log("      resizeContour ACTIVE="+ACTIVE.android.viewId+"<<");
-} else {
-    console.log("      resizeContour ACTIVE= NULL");
-}
     if (classN.indexOf('contour') == -1) {
-if (e.target != null && e.target.android != null) {
-    console.log("      resizeContour e.target="+e.target.android.viewId+"<<");
-} else {
-    console.log("      resizeContour e.target= NULL");
-}
-if (e.currentTarget != null && e.currentTarget.android != null) {
-    console.log("      resizeContour e.currentTarget="+e.currentTarget.android.viewId+"<<");
-} else {
-    console.log("      resizeContour e.currentTarget= NULL");
-}
         if (e.target === ACTIVE) {
-console.log("  resizeContour 222 classN="+classN);
             classN = 'active';
         } else {
             if (e.currentTarget === ACTIVE) {
-console.log("  resizeContour 333 classN="+classN);
                 classN = 'active';
             }
         }
     }
-console.log("  resizeContour 444 classN="+classN);
     status = statusOLD;
 
-if (currentElement != null) {
-console.log("resizeContour viewId="+currentElement.android.viewId);
-} else {
-console.log("resizeContour currentElement= NULL");
-}
-
     if (classN === 'active') {
-console.log("resizeContour 1111");
         status = statusNEW;
         var x = e.pageX;
         var y = e.pageY;
@@ -308,7 +272,6 @@ console.log("resizeContour 1111");
         document.onmousemove = resizeNewAngle;
         document.onmouseup = mouseUpNewEl;
     } else if (classN.indexOf('contour') > -1) {
-console.log("resizeContour 2222");
         currentElement = e.target.closest(".element");
         switch(classN) {
             case 'contourRB':
@@ -335,7 +298,6 @@ console.log("resizeContour 2222");
         document.onmousemove = resizeNewAngle;
         document.onmouseup = mouseUpEl;
     } else {
-console.log("resizeContour 3333");
         document.onmouseup = clickEl;
     }
 }

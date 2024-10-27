@@ -145,7 +145,6 @@ function clickElement(event, el) {
     hideContourEl();
     currentElement = el;
     setParamCompon();
-console.log("clickElement setPickElement");
     setPickElement(el);
     selectNavigatorEl(el);
     if (el.android != null) {
@@ -166,7 +165,6 @@ console.log("clickElement setPickElement");
 }
 
 function setPickElement(el) {
-console.log("setPickElement");
     appendContour();
 }
 
@@ -245,6 +243,7 @@ function showElemChilds(el) {
         
 function viewComponElem(el) {
     let p = el.android;
+//console.log("viewComponElem VVVVV="+p.viewId+"<< p.visibility="+p.visibility);
     if (p.visibility != null && ! p.visibility) {
         return;
     }

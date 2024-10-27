@@ -83,7 +83,6 @@ function PushNotifications() {
                 this.edit_1();
                 break;
             case 1:
-//console.log("RES="+res+"<<");
                 closeDataWindow(this.wind);
                 break;
         }
@@ -290,7 +289,6 @@ function PushNotifications() {
             }
         }
         dat.listPush = listPush;
-//console.log("DAT="+JSON.stringify(dat));
         doServerAlien("POST", currentProject.host + "push/save", this, JSON.stringify(dat), {param:1}, this.wind);
     };
     

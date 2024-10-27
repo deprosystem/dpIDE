@@ -61,10 +61,8 @@ function uiEditText() {
         {name: "st_8", title:"maxValue",type:"Text",len:40,valid:"float"},
         {name: "bool_5", title:"Password",type:"Check",br:true},
         {name: "st_9", title:"Rule",type:"Text",len:40,valid:"password",clazz:"pass_attr"},
-//        {name: "st_10", title:"Show",len:80,type:"SelectId",clazz:"pass_attr",br:true},
-//        {name: "st_11", title:"Hide",len:80,type:"SelectId",clazz:"pass_attr"},
         {name: "st_10", title:"Show",len:80,type:"Img",clazz:"pass_attr",br:true},
-        {name: "st_11", title:"Hide",len:80,type:"Img"},
+        {name: "st_11", title:"Hide",len:80,type:"Img",clazz:"pass_attr"},
         {name: "st_12", title:"Equals",len:80,type:"SelectId",tags:"EditText",clazz:"pass_attr"}
     ];
 
@@ -181,9 +179,9 @@ function uiEditText() {
             sss.style.display = "none";
         }
         contentAttributes.append(sss);
-        new EditForm(meta, p.componParam, contentAttributes, null, this, true);
+        new EditForm(meta, p.componParam, contentAttributes, null, this);
         this.viewPass(currentElement.android.componParam.bool_5);
-    }
+    };
     
     this.viewElementUI = function(p, el) {
         let divText = el.getElementsByClassName('text')[0];

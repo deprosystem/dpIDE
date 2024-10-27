@@ -687,18 +687,6 @@ function addTypeView(p) {
     }
     let listView = currentElement;
     listView.android.viewElement = listView;
-/*
-    let listView = createListView();
-    let ik = p.children.length;
-    listView.android.viewElement = listView;
-    if (currentComponent.type == "List") {
-        listView.android.viewId = "__sw_" + ik;
-        listView.android.below = "__sw__" + (ik - 1);
-    } else {
-        listView.android.viewId = "T_" + ik;
-        listView.android.below = "T_" + (ik - 1);
-    }
-*/
     addNewElement(ACTIVE, listView);
     addNavigatorEl(listView);
     ACTIVE.android.children.push(listView.android);

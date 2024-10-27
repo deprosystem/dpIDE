@@ -64,7 +64,6 @@ function formJsonProject() {
     if (isStylesCheckChange) {
         par.style_check = JSON.stringify(ListStyleCheck);
     }
-console.log("isStylesCheckChange_3="+isStylesCheckChange_3);
     if (isStylesCheckChange_3) {
         par.style_check_3 = JSON.stringify(ListStyleCheck_3);
     }
@@ -140,7 +139,7 @@ function formCreateProject(oper) {      //  oper = 1 - create, 0 - chang
         {name: "nameProject", title:"* Project name",len:-1,type:"Text",valid:"latin"},
         {name: "namePackage", title:"* Package name",len:-1,type:"Text",valid:"name_var",br:true},
         {name: "comment", title:"Description",type:"Textarea",rows:3,br:true}
-    ]
+    ];
     if (oper == 0) {
         h = 450;
         titl = "Change Project";
@@ -190,6 +189,7 @@ function cbCreateProject(res, oper) {
         listImage = null;
     }
     currentProject = JSON.parse(res);
+    pushNotif = new PushNotifications();
     cbCreateProjectDop();
     shutScreen.style.display = "none";
 }
@@ -297,16 +297,16 @@ function setScreenElements(el, children, tab) {
     for (let i = 0; i < ik; i++) {
         let newNode = children[i];
         let newEl = createNewEl();
-//        let typeEl;
         newEl.android = newNode;
         newNode.viewElement = newEl;
         addNewElement(el, newEl);
         let p = newEl.android;
         try {
             uiFunction = eval("new ui" + p.type + "()");
-            uiFunction.setElementUI(p, newEl, el);
+            if (uiFunction != null && xiFunction.setElementUI != null) {
+                uiFunction.setElementUI(p, newEl, el);
+            }
         } catch(e) { 
-//console.log("setScreenElements catch="+e+"<<");
         }
         viewComponElem(newEl);
         addNavigatorEl(newEl);
@@ -414,7 +414,6 @@ function cbSaveProject(res) {
 }
 
 function cbListProject(res) {
-//console.log("RES="+res);
     setListProject(JSON.parse(res));
 }
 

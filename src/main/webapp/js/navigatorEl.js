@@ -131,7 +131,7 @@ function selectElement(el) {
     hideContourEl();
     currentElement = el.elementLink;
     setParamCompon();
-console.log("NAV selectElement");
+
     setPickElement(currentElement);
 }
 

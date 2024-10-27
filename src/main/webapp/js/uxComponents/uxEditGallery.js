@@ -49,5 +49,5 @@ function uxEditGallery() {
             err.error = 2;
         }
         return err;
-    }
+    };
 }

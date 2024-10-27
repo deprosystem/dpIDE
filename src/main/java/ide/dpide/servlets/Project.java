@@ -76,7 +76,7 @@ public class Project extends BaseServlet {
                         pc.screens = formScreens();
                         pc.resurseInd = lowerCaseRandom(15);
                         pc.push = "";
-                        pc.host = "";
+                        pc.host = "https://apps.dp-ide.com/";
                         pc.dateCreate = new Date().getTime();
                         pc.whereServer = "Server IDE";
                         id = projectDb.createProjectId(pc);
